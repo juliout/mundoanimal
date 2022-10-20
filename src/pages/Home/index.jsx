@@ -8,19 +8,27 @@ import Modal from '../../components/modal'
 import FuncionaCard from '../../components/FuncionaCards'
 import InputMask from 'react-input-mask'
 
-import nmbBg from '../../images/bannernumeros.png'
 import indicarbg from '../../images/indicarbg.png'
 
-import {BannerDiv, ComoFuncionaDiv, PerguntasDiv, IndicarBannerDiv,RestInfoDiv} from './homeStyled'
+import {BannerDiv, BannerTwo, UltimasDiv, ComoFuncionaDiv,
+ PerguntasDiv, IndicarBannerDiv,RestInfoDiv, ParticiparDiv,
+ MuralComunidade, PaticiparComunidade, OutrosDiv} from './homeStyled'
 
 import Email from '../../components/emailAutocompletee'
 import ModalError from '../../components/modalError'
 
+import BtnDefault from '../../components/BtnDefault'
+
 
 import {BsFillShareFill} from 'react-icons/bs'
-import {RiUserUnfollowFill} from 'react-icons/ri'
+import {RiUserUnfollowFill, RiArrowDownSFill} from 'react-icons/ri'
 import {VscDebugStackframeDot} from 'react-icons/vsc'
 import {MdReportProblem} from 'react-icons/md'
+import {HiUserCircle} from 'react-icons/hi'
+import {FaShare} from 'react-icons/fa'
+import {AiOutlineHeart, AiFillHeart, AiFillWechat, AiOutlineCloseCircle} from 'react-icons/ai'
+import {IoMdThumbsUp} from 'react-icons/io'
+import {GoVerified} from 'react-icons/go'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -39,330 +47,866 @@ export default function Home(){
   const [formCadastro, setFormCadastro] = useState({})
 
 
+  return (
+      <>
+        <Header />
+          {cadastrar === true ? <MCadastro setCadastrar={setCadastrar} form={formCadastro}/> : null}
+          {modalDescadastrar === true ? <Modal type={'descadastrar'} Modal={setModalDescadastrar}/> : null}
+          {modalReportar === true ? <Modal type={'reportarError'} Modal={setModalReportar}/> : null}
+          
+          {/* container do alerta*/}
+          <ToastContainer
+            position="top-center"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
 
-  const sendCadastrar = async (e) => {
-    e.preventDefault()
-    let array = []
-    let socialI = ''
-    let contact= ''
-    let loteriaArray = e.target.loteria
-    loteriaArray.forEach(element => {
-      if (element.checked === true) {
-        array.push(element.id)
-      }
-    });
-    
-    e.target.social.forEach(element=>{
-      if(element.checked === true) {
-        socialI = element.id
-      }
-    })
-    if(e.target.socialContact.id === 'socialContact-wpp'){
-      var er = /[^a-z0-9]/gi;
-		  let texto = e.target.socialContact.value.replace(er, "");
-      
-      if(texto.length < 11) {
-        return ModalError('telefone invalido')
-      }
-      contact = texto
-    }
-    if(e.target.socialContact.id === 'socialContact-email') {
-      
-      let resulte = e.target.socialContact.value.indexOf('@') > -1
-      
-      if(resulte === false) {
-        return ModalError('email invalido')
-      } 
-      contact = e.target.socialContact.value
-    }
+        {/* div banner */}
+        <BannerDiv>
+          <div className="banner">
+            <div className='rpbanner'>
+              <h1>QUER CONHECER FATOS CURIOSOS SOBRE O MUNDO ANIMAL?</h1>
+              <button>[Entrar na comunidade]</button>
+            </div>          
+          </div>              
+        </BannerDiv>
 
-    let userObj = {
-      loteria : array,
-      social: socialI,
-      socialContact : contact,
-    }
-    setFormCadastro(userObj)
-    setCadastrar(true)
-    
-  }
-  
-
-  const sendLogin = async  (login) => {
-    await Login(login)
-  }
-
-
-    return (
-        <>
-            <Header sendLogin={sendLogin}/>
-              {cadastrar === true ? <MCadastro setCadastrar={setCadastrar} form={formCadastro}/> : null}
-              {modalDescadastrar === true ? <Modal type={'descadastrar'} Modal={setModalDescadastrar}/> : null}
-              {modalReportar === true ? <Modal type={'reportarError'} Modal={setModalReportar}/> : null}
-
-              <ToastContainer
-                position="top-center"
-                autoClose={1000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
-     
-            <BannerDiv bg={nmbBg}>
-                <div className="bannerMain">
-                  <form className='left' onSubmit={(e)=> sendCadastrar(e)}>
-                    <h1 className='leftTitle'>
-                      Receba gratuitamente no seu zap lembretes de encerramento 
-                      de apostas eo resultado dos sorteios das principais
-                      loterias brasileiras!
-                    </h1>
-                    <div className='divselection'>
-                      <div className='leftOne'>
-                          <h3> <p>1</p> Selecione os sorteios de quais loterias você
-                            quer receber o resultado por whatsapp:
-                          </h3>
-
-                          <div className="divUls">
-                            <ul id='ul-lis-inputs'>
-                              <li>
-                                <input type="checkbox" name="loteria" id="megasena"/>
-                                <label htmlFor="megasena">Mega Sena</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="lotofacil"/>
-                                <label htmlFor="lotofacil">Lotofácil</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="duplasena"/>
-                                <label htmlFor="duplasena">Dupla Sena</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="quina"/>
-                                <label htmlFor="quina">Quina</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="supersete"/>
-                                <label htmlFor="supersete">Super sete</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="timemania"/>
-                                <label htmlFor="timemania">Timemania</label>
-                              </li>
-                            </ul>
-                            <ul>
-                              <li>
-                                <input type="checkbox" name="loteria" id="lotomania"/>
-                                <label htmlFor="lotomania">Lotomania</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="diadesorte"/>
-                                <label htmlFor="diadesorte">Dia de sorte</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="federal"/>
-                                <label htmlFor="federal">Federal</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="loteca"/>
-                                <label htmlFor="loteca">Loteca</label>
-                              </li>
-                              <li>
-                                <input type="checkbox" name="loteria" id="milionaria"/>
-                                <label htmlFor="milionaria">Milionária</label>
-                              </li>
-                            </ul>
-                          </div>
-                      </div>
-                      <div className='receber baseFont'>
-                        <h3><p>2</p> Como quer receber ?</h3>
-                        <div className='redesSelect'>
-                          <div className='cardRede' onClick={()=> {setPlataform('whatsapp')}}>
-                            <label htmlFor='whatsapp'><img src="/image/bwpp.png" alt=""/></label>
-                            <input type="radio" name="social" id="whatsapp"  defaultChecked/>
-                          </div>
-                          <div className='cardRede' onClick={()=> {setPlataform('telegram')}}>
-                            <label htmlFor="telegram" ><img src="/image/btele.png" alt="" /></label>
-                            <input type="radio" name="social" id="telegram" />
-                          </div>
-                          <div className='cardRede' onClick={()=> {setPlataform('e-mail')}}>
-                            <label htmlFor="e-mail" ><img src="/image/bemail.png" alt="" /></label>
-                            <input type="radio" name="social" id="e-mail" />
-                          </div>
-                        </div>
-                        { 
-                          plataform === 'whatsapp' ?          
-                          <InputMask  type='text' className='redeDado shadow' mask={'(99)99999-9999'} name='socialContact' id='socialContact-wpp'/>               
-                          : plataform === 'telegram' ? <input type='text'className='redeDado shadow' name='socialContact' id='socialContact-telegram' required/>
-                          : plataform === 'e-mail' ?<Email type='email' className='redeDado shadow' name='socialContact' id='socialContact-email' required/>
-                          : null
-                        } 
-                        <div className='termosdiv'>
-                          <input type="checkbox" name="termos" id="termos" required/>
-                          <label htmlFor="termos"> Li e aceito os <a href='/termosss'>termos de uso</a></label>
-                        </div>
-                      <button className='cadastrarbtn'> CADASTRAR </button>                
-                        
-                      </div>  
-                    </div>
-                  </form>
-                  <div className='right'>
-                      <img src="/image/gratis.png" alt="" className='selo'/>
-                      <img src="/image/telzap.png" alt="" className='zap'/>
-                  </div>
-                </div>
-                
-            </BannerDiv>
-            
-            <ComoFuncionaDiv>
-              <div className="funcionaMain">
-                <div className='funcionaTop'>
-                    <h1>Como Funciona?</h1>
-                    <p>Para receber os lembretes, basta você seguir os passos abaixo:</p>
-                </div>
-                <div className='funcionaBottom'>
-                    <FuncionaCard img={"/image/card1.png"} number={1} 
-                    text={'Cadastre os horários que você termina suas refeições no nosso sistema.'}
-                    />
-                    <FuncionaCard
-                      img={'/image/card2.png'} number={2} text={'cadastre seus dados e uma senha, para que você possa editar ou cancelar o envio dos lembretes aqui pelo site'}
-                    />
-                    <FuncionaCard
-                      img={'/image/card3.png'} number={3} text={'Pronto! Todos os dias, ao fim de cada refeição, você receberá no zap um lembrete para escovar os dentes. O serviço é 100% gratuito e não precisa de instalação de nenhum tipo de aplicativo no seu celular.'}
-                    />
-                    <FuncionaCard 
-                      img={'/image/card4.png'} number={4} text={'Se você quiser alterar os horários ou cancelar o envio dos lembretes, basta entrar aqui no site e acessar o sistema, usando a senha que você criou no momento do cadastro.'}
-                    />
-                </div>
-              </div>        
-            </ComoFuncionaDiv>
-
-            <PerguntasDiv>
-              <div className="perguntasMain">
-                <h1>Perguntas Frequentes</h1>
-                <div className="perguntasContainer">
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
+        <BannerTwo>
+          <div className="main">
+            <div className="card bg1">
+              <div className='card-text'>
+                <span>
+                  Todos os dias, posts com curiosidades sobre os bichos que compartilham o mundo com a gente!
+                </span>
+              </div>
+            </div>
+            <div className="card bg2">
+              <div className='card-text div-right'>
+                <span>
+                  Entre nos nossos grupos de "loucos por bichos" e receba o melhor conteúdo sobre o mundo animal
+                </span>
+              </div>
+            </div>
+            <div className="card bg3">
+              <div className="cardleft">
+                <p>Você escolhe onde quer receber nossos posts</p>
+                <div className='groupnot'>
+                  <img src="/image/hwpp.png" alt="logo wpp" className='logonot'/>
+                  <img src="/image/htele.png" alt="logo telegram" className='logonot'/>
+                  <img src="/image/email.png" alt="logo email" className='logonot'/>
+                  <img src="/image/notification.png" alt="logo notification" className='logonot'/>
                 </div>
               </div>
-            </PerguntasDiv>
+              <img src="/image/telzap.png" alt="imagem de um celular com o aplicativo wpp aberto"  className='telnot'/>
+            </div>
+          </div>
+        </BannerTwo>
 
-            <IndicarBannerDiv bg={indicarbg}>
-                <div className="indicaMain">
-                <div className="indicarLeft">
-                    <h1>Título texto alerta de Sorte exemplo</h1>
-                    <button> Indicar Amigos <BsFillShareFill className='shareIcon'/></button>
+        <UltimasDiv>
+          <div className="main">
+            <h2 className='ultima-title'>Ultimas Enviadas</h2>
+            <div className="containerPosts">
+              <div className='show-cards'>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
                 </div>
-                <div className="indicarRight">
-                    <img src="/image/indicarimg.png" alt="conjuntodeimages" />
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
                 </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
                 </div>
-            </IndicarBannerDiv>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
 
-            <PerguntasDiv>
-                <div className="perguntasMain">
-                  <h1>Perguntas Frequentes</h1>
-                  <div className="perguntasContainer">
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
-                  <LiPerguntas>
-                    <h3>Punctuation conventions used in Chinese languages</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-                  </LiPerguntas>
+              </div>
+              <img src="/image/banner-get.jpg" alt="banner para o site get"  className='banner-get'/>
+            </div>
+            <div className="containerPosts">
+              <div className='show-cards'>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+              </div>
+              <img src="/image/banner-get.jpg" alt="banner para o site get"  className='banner-get'/>
+            </div>
+            <div className="containerPosts">
+              <div className='show-cards'>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+                <div className="card-post">
+                  <p>24/03/2022 - 21:30h</p>
+                  <h2>Escondidinho de carne seca</h2>
+                  <span>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  </span>
+                </div>
+              </div>
+              <img src="/image/banner-get.jpg" alt="banner para o site get"  className='banner-get'/>
+            </div>
+            <BtnDefault type='ver-mais'/>
+          </div>
+        </UltimasDiv>
+
+        <ParticiparDiv>
+          <div className="main">
+            <h2>Sabe muito sobre o Mundo Animal?</h2>
+            <div>
+              <p>Participe da nossa comunidade e escreva no mural!</p>
+              <p>Os melhores posts serão enviados para os mais de 100.000 membros da nossa comunidade!</p>
+            </div>
+            <BtnDefault type='participar'/>
+          </div>
+        </ParticiparDiv>
+
+        <MuralComunidade>
+          <div className="main">
+            <h2 className='mural-title'>Mural da Comunidade</h2>
+
+            <form className="create-post">
+              <div className="line-one">
+                <input type="text" name='title-post' id='post-title' placeholder='Título'/>
+                <p>Restam 2000 caracteres</p>
+              </div>
+              <textarea name="post-textarea" id="post-textarea" cols="30" rows="10" placeholder='Texto'/>
+              <input type="text" name="link-post" id="link-post" placeholder='Link/Fonte'/>
+              <button className='post-btn-enviar'>Enviar</button>
+            </form>
+            <div className='organizar-post'>
+              <p>Organizar por :</p>
+              <img src="/image/filter-solid.svg" alt="imagem de um filtro de posts"/>
+            </div>
+            {/* caixa do post e do comentario --- separar */}
+            <div className="box-posts">
+              <div className="post-container">
+                <h1 className='titulos-posts'>Título exemplo chamada</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <div className="div-user">
+                  <HiUserCircle className='user-image'/>
+                  <div>
+                    <p>Nome da pessoa - idade - Gènero</p>
+                    <p>Cidade/estado - data em dd/mm/aa - x horas atras</p>
                   </div>
                 </div>
-            </PerguntasDiv>
-
-            <RestInfoDiv>
-              <div className="restMain">
-                <div className="restTop">
-                  <div className="list">
-                    <span className='hiddenmenu baseColor'>Menu</span>
-                    <div className='divLeft'>
-                      <VscDebugStackframeDot className='baseColor hidden'/>
-                      <BtnFlip className='textleft' text={'Quem somos'} />
-                    </div>
-                    <div className='divLeft'>
-                      <VscDebugStackframeDot className='baseColor point'/>
-                      <BtnFlip text={'Termos de uso'}/>
-                    </div>
-                    <div className='divLeft'>
-                      <VscDebugStackframeDot className='baseColor point'/>
-                      <BtnFlip text={'Calendário de Sorteios'}/>
-                    </div>
-                    <div className='divLeft'>
-                      <VscDebugStackframeDot className='baseColor point'/>
-                      <BtnFlip text={'Fale conosco'}/>
-                    </div>
-                    <div className='divLeft'>
-                      <VscDebugStackframeDot className='baseColor point'/>
-                      <BtnFlip text={'Politica de privacidade'}/> 
-                    </div> 
+                <div className="interact">
+                  <div className="btns-interact">
+                    <button>
+                      <AiOutlineHeart className='interact-icons'/>
+                      1
+                    </button>
+                    <button>
+                      <AiFillWechat className='interact-icons'/> 
+                      1
+                    </button>
+                    <button>
+                      <FaShare className='interact-icons'/> 
+                      1
+                    </button>
                   </div>
-                  <div className="bot">
-                    <span className='baseFont baseColor'> Apoio:</span>
-                    <img src="/image/submarino.png" alt="logosubmarino" className='restLogo'/>
-                    <img src="/image/americanas.png" alt="logoamericanas" className='restLogo'/>
-                    <img src="/image/genera.png" alt="logogenera" className='restLogo'/>
+
+                  <div className="post-verificado">
+                    <GoVerified className='veri-icon'/>
+                    <p>verificado</p>
                   </div>
                 </div>
-                <div className="restBot">
-                  <div className='left'>
-                    <div onClick={()=>{setModalDescadastrar(true)}}>
-                      <RiUserUnfollowFill className='lIcon baseColor'/>
-                      <BtnFlip text={'descadastrar'}/>
+              </div>
+
+              <div className="comentario-container">
+                <div className="relevante">
+                  <span>Mais Relevantes <RiArrowDownSFill/></span>
+                </div>
+                <div className="comentar">
+                  <HiUserCircle className='icon-comentar'/>
+                  <input 
+                    type="text" 
+                    placeholder='Escreva um comentário...' 
+                    name='inpt-comentario' 
+                    id='inpt-comentario'
+                    />
+                </div>
+
+                <div className='div-comentario'>
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
                     </div>
-                    <div onClick={()=> setModalReportar(true)}>
-                      <MdReportProblem className='lIcon baseColor'/>
-                      <BtnFlip text={'reportar erro'}/>
+                  </div>                  
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta em caso de mais linhas</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  <div className='right'>
-                    <span className='baseFont baseColor'>
-                      compartilhe:
-                    </span>
-                    <div>
-                      <img src="/image/wppicon.png" alt="wppicon" className='socialIcons'/>
-                      <img src="/image/teleicon.png" alt="telegramicon" className='socialIcons'/>
-                      <img src="/image/instaicon.png" alt="instagramicon" className='socialIcons'/>
-                      <img src="/image/faceicon.png" alt="facebookicon" className='socialIcons'/>
-                      <img src="/image/tticon.png" alt="twittericon" className='socialIcons'/>
-                      <img src="/image/linkIcon.png" alt="linkedinicon" className='socialIcons'/>
-                    </div>
+                </div>
+              </div>
+            </div>
+            {/* final aqui */}
+            {/* caixa do post e do comentario --- separar */}
+            <div className="box-posts">
+              <div className="post-container">
+                <h1 className='titulos-posts'>Título exemplo chamada</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <div className="div-user">
+                  <HiUserCircle className='user-image'/>
+                  <div>
+                    <p>Nome da pessoa - idade - Gènero</p>
+                    <p>Cidade/estado - data em dd/mm/aa - x horas atras</p>
                   </div>
                 </div>
-              </div> 
-            </RestInfoDiv>
+                <div className="interact">
+                  <div className="btns-interact">
+                    <button>
+                      <AiOutlineHeart className='interact-icons'/>
+                      1
+                    </button>
+                    <button>
+                      <AiFillWechat className='interact-icons'/> 
+                      1
+                    </button>
+                    <button>
+                      <FaShare className='interact-icons'/> 
+                      1
+                    </button>
+                  </div>
 
-            <Footer/>
-        </>
-    )
+                  <div className="post-verificado">
+                    <GoVerified className='veri-icon'/>
+                    <p>verificado</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="comentario-container">
+                <div className="relevante">
+                  <span>Mais Relevantes <RiArrowDownSFill/></span>
+                </div>
+                <div className="comentar">
+                  <HiUserCircle className='icon-comentar'/>
+                  <input 
+                    type="text" 
+                    placeholder='Escreva um comentário...' 
+                    name='inpt-comentario' 
+                    id='inpt-comentario'
+                    />
+                </div>
+
+                <div className='div-comentario'>
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
+                    </div>
+                  </div>                  
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='caixa-comentario'>
+                    <HiUserCircle className='icon-comentario'/>
+                    <div className='container'>
+                      <div className="conteudo">
+                        <h3 className='titulo-comentario'>Nome da Pessoa</h3>
+                        <p className='comentario'>Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta Aqui vai o comentário exemplo loren ipsun teste comentário 2 para mostrar o tamanho que ajusta em caso de mais linhas</p>
+                      </div>
+                      <div className="bot">
+                        <button className='btn-comentario-curtir'>curtir</button>
+                        <button className='div-comentario-cutir'>
+                          <IoMdThumbsUp className='comentario-joinha'/>
+                          1
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            {/* final aqui */}
+            
+            <BtnDefault type='ver-mais'/>
+          </div>      
+        </MuralComunidade>
+
+
+        <PaticiparComunidade>
+          <div className="main">
+            <a href="/"> Click para Participar</a>
+          </div>
+        </PaticiparComunidade>
+
+        <OutrosDiv>
+          <div className="main">
+            <h2 className='outro-title'>Outros VCsabia</h2>
+
+            <div className="container-cards">
+
+              {/* fazer um componente de cards da apartitr da div cards-outros */}
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+              <div className="card-outros">
+                <div className="card-top">
+                  <img 
+                    src="/image/vcsabia-human-body.png" 
+                    alt="logo voce sabia" 
+                  />
+                  <div>
+                    <p>24/03/2022 - 21:30H</p>
+                    <h3>Escondidinho de carne seca titulo exemplo quebra</h3>
+                  </div>
+                </div>
+                <p className="card-text">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting.
+                </p>
+              </div>
+            </div>
+
+            <BtnDefault type='ver-mais'/>
+          </div>
+        </OutrosDiv>
+
+
+        <ComoFuncionaDiv>
+          <div className="funcionaMain">
+            <div className='funcionaTop'>
+                <h1>Como Funciona?</h1>
+                <p>Para receber os lembretes, basta você seguir os passos abaixo:</p>
+            </div>
+            <div className='funcionaBottom'>
+                <FuncionaCard img={"/image/card1.png"} number={1} 
+                text={'Cadastre os horários que você termina suas refeições no nosso sistema.'}
+                />
+                <FuncionaCard
+                  img={'/image/card2.png'} number={2} text={'cadastre seus dados e uma senha, para que você possa editar ou cancelar o envio dos lembretes aqui pelo site'}
+                />
+                <FuncionaCard
+                  img={'/image/card3.png'} number={3} text={'Pronto! Todos os dias, ao fim de cada refeição, você receberá no zap um lembrete para escovar os dentes. O serviço é 100% gratuito e não precisa de instalação de nenhum tipo de aplicativo no seu celular.'}
+                />
+                <FuncionaCard 
+                  img={'/image/card4.png'} number={4} text={'Se você quiser alterar os horários ou cancelar o envio dos lembretes, basta entrar aqui no site e acessar o sistema, usando a senha que você criou no momento do cadastro.'}
+                />
+            </div>
+          </div>        
+        </ComoFuncionaDiv>
+
+        <PerguntasDiv>
+          <div className="perguntasMain">
+            <h1>Perguntas Frequentes</h1>
+            <div className="perguntasContainer">
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+            </div>
+          </div>
+        </PerguntasDiv>
+
+        <IndicarBannerDiv bg={indicarbg}>
+            <div className="indicaMain">
+            <div className="indicarLeft">
+                <h1>Título texto alerta de Sorte exemplo</h1>
+                <button> Indicar Amigos <BsFillShareFill className='shareIcon'/></button>
+            </div>
+            <div className="indicarRight">
+                <img src="/image/indicarimg.png" alt="conjuntodeimages" />
+            </div>
+            </div>
+        </IndicarBannerDiv>
+
+        <PerguntasDiv>
+            <div className="perguntasMain">
+              <h1>Perguntas Frequentes</h1>
+              <div className="perguntasContainer">
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              </div>
+            </div>
+        </PerguntasDiv>
+
+        <RestInfoDiv>
+          <div className="restMain">
+            <div className="restTop">
+              <div className="list">
+                <span className='hiddenmenu baseColor'>Menu</span>
+                <div className='divLeft'>
+                  <VscDebugStackframeDot className='baseColor hidden'/>
+                  <BtnFlip className='textleft' text={'Quem somos'} />
+                </div>
+                <div className='divLeft'>
+                  <VscDebugStackframeDot className='baseColor point'/>
+                  <BtnFlip text={'Termos de uso'}/>
+                </div>
+                <div className='divLeft'>
+                  <VscDebugStackframeDot className='baseColor point'/>
+                  <BtnFlip text={'Calendário de Sorteios'}/>
+                </div>
+                <div className='divLeft'>
+                  <VscDebugStackframeDot className='baseColor point'/>
+                  <BtnFlip text={'Fale conosco'}/>
+                </div>
+                <div className='divLeft'>
+                  <VscDebugStackframeDot className='baseColor point'/>
+                  <BtnFlip text={'Politica de privacidade'}/> 
+                </div> 
+              </div>
+              <div className="bot">
+                <span className='baseFont baseColor'> Apoio:</span>
+                <img src="/image/submarino.png" alt="logosubmarino" className='restLogo'/>
+                <img src="/image/americanas.png" alt="logoamericanas" className='restLogo'/>
+                <img src="/image/genera.png" alt="logogenera" className='restLogo'/>
+              </div>
+            </div>
+            <div className="restBot">
+              <div className='left'>
+                <div onClick={()=>{setModalDescadastrar(true)}}>
+                  <RiUserUnfollowFill className='lIcon baseColor'/>
+                  <BtnFlip text={'descadastrar'}/>
+                </div>
+                <div onClick={()=> setModalReportar(true)}>
+                  <MdReportProblem className='lIcon baseColor'/>
+                  <BtnFlip text={'reportar erro'}/>
+                </div>
+              </div>
+
+              <div className='right'>
+                <span className='baseFont baseColor'>
+                  compartilhe:
+                </span>
+                <div>
+                  <img src="/image/wppicon.png" alt="wppicon" className='socialIcons'/>
+                  <img src="/image/teleicon.png" alt="telegramicon" className='socialIcons'/>
+                  <img src="/image/instaicon.png" alt="instagramicon" className='socialIcons'/>
+                  <img src="/image/faceicon.png" alt="facebookicon" className='socialIcons'/>
+                  <img src="/image/tticon.png" alt="twittericon" className='socialIcons'/>
+                  <img src="/image/linkIcon.png" alt="linkedinicon" className='socialIcons'/>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </RestInfoDiv>
+
+        <Footer/>
+    </>
+  )
 }
 

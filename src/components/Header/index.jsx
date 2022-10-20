@@ -1,9 +1,9 @@
 import {HeaderDiv} from './headerStyled'
-import { GiHamburgerMenu, GiPadlock } from 'react-icons/gi'
-import {FiEdit} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
-import { useState, useContext, useEffect } from 'react'
-import { AuthContext } from '../../contexts/auth'
+import { GiHamburgerMenu} from 'react-icons/gi'
+
+// import { Link } from 'react-router-dom'
+// import { useState, useContext, useEffect } from 'react'
+// import { AuthContext } from '../../contexts/auth'
 
 export default function Header({sendLogin}) {
 

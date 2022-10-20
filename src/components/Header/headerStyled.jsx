@@ -4,7 +4,8 @@ export const HeaderDiv = styled.header`
 
     width: 100%;
     height: 57px;
-
+    position: fixed;
+    z-index: 9;
     .main {
     background-color: #0C3900;
     width: 100%;
@@ -20,9 +21,8 @@ export const HeaderDiv = styled.header`
     .container {
         width: 100%;
         height: 57px;
-        max-width: 1100px;
+        max-width: 950px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         height: 100%;
     
@@ -35,6 +35,7 @@ export const HeaderDiv = styled.header`
         width: 200px;
         height: 66px;
         transform: translateY(10px);
+        margin: 0 auto;
     }
     
     .hicons {
@@ -60,6 +61,10 @@ export const HeaderDiv = styled.header`
         img {
             width: 40px;
             height: 40px;
+            cursor: pointer;
+            :hover {
+                transform: scale(1.2);
+            }
         }        
     }
 `
