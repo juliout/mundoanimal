@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 
-const pColor = '#3eb54e'
-
 export const BtnDiv = styled.div`
 
   box-sizing: border-box;
 
 div {
-  color: ${pColor};
+  
   text-decoration: none;
   transition: color 0.2s;
   width: 100%;
@@ -16,6 +14,9 @@ div {
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
+  a {
+    color: ${p=>p.color || 'black'};
+  }
 }
 
 div:hover,
@@ -25,7 +26,7 @@ div:focus {
 
   div.flip-animate {
     text-align: center;
-  span {
+  a {
     position: relative;
     display: inline-block;
     padding: 0;    
@@ -34,7 +35,7 @@ div:focus {
     transform-style: preserve-3d;
   }
 
-  span:before {
+  a:before {
     position: absolute;
     top: 100%;
     left: 0;
@@ -51,14 +52,14 @@ div:focus {
     cursor: pointer;
   }
 
-  &:hover span,
-  &:focus span {
+  &:hover a,
+  &:focus a {
     transform: rotateX(90deg) translateY(-22px);
   }
 
-  &:hover span:before,
-  &:focus span:before {
-    color: black;
+  &:hover a:before,
+  &:focus a:before {
+    color: ${p=>p.secondColor || 'black'};
   }
   }
 

@@ -1,10 +1,10 @@
 import {BtnDiv} from './btnStyled'
 
-export default function BtnFlip({btnW, btnH, text}) {
+export default function BtnFlip({text, color, secondColor}) {
     return(
-        <BtnDiv>
+        <BtnDiv color={color} secondColor={secondColor}>
             <div className='flip-animate'>
-                <span data-back={text}>{text}</span>
+                <a href='/' data-back={text}>{text}</a>
             </div>
         </BtnDiv>
     )

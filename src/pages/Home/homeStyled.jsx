@@ -691,6 +691,48 @@ export const OutrosDiv = styled.div`
     }
 `
 
+export const ModerarDiv = styled.div`
+    width: 100%;
+    height: 187px;
+    background: url('/image/bg-be-moderator.png');
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    margin-bottom: 10px;
+
+    .main {
+        width: 99%;
+        max-width: 960px;
+        height: 100%;
+        background: url('/image/be-moderator.png');
+        background-position: left;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        
+        div {
+            text-align: center;
+            margin-right: 10%;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+        }
+        a {
+            color: ${orangeBtn};
+            text-decoration: underline;
+            :hover {
+                color: black;
+            }
+        }
+    }
+`
+
 export const ComoFuncionaDiv = styled.div`
     
     width: 100%;
@@ -702,7 +744,7 @@ export const ComoFuncionaDiv = styled.div`
     
     .funcionaMain {
         width: 99%;
-        max-width: 1100px;
+        max-width: 960px;
         height: 100%;
 
         display: flex;
@@ -712,16 +754,31 @@ export const ComoFuncionaDiv = styled.div`
 
         .funcionaTop {
             h1 {
-                width:19rem;
-                color: ${pColor};
-                border-bottom: 5px ${borderColor} solid;
-                margin-bottom: 25px;
+                color: #6225B5;
+                font-weight: 600;
+                font-size: 1rem;
+                margin: 0;
+
+                :after {
+                    content: '';
+                    width: 60px;
+                    height: 2px;
+                    background: ${Purple};
+                    display: block;
+                    margin: 7px 0;
+                }
             }
             p {
                 color: ${silverColor};
                 font-weight: 700;
-                font-size: 1rem;
+                font-size: .8rem;
                 margin-bottom: 20px;
+                font-weight: 400;
+            }
+            span {
+                color: ${Purple};
+                font-size: .9rem;
+                font-weight: 700;
             }
         }
 
@@ -808,17 +865,27 @@ export const PerguntasDiv = styled.div`
     width: 100%;
     min-height: 410px;
     height: auto;
+    background-color: #f7f7f7;
     
     .perguntasMain {
-        width: 100%;
-        max-width: 1100px;
+        width: 99%;
+        max-width: 960px;
         padding: 0 10px;
 
-        h1{
-            border-bottom: 5px ${borderColor} solid;
-            width: 19rem;
-            color: ${pColor};
-            margin-bottom: 20px;
+        h1 {
+            color: #6225B5;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0;
+
+            :after {
+                content: '';
+                width: 60px;
+                height: 2px;
+                background: ${Purple};
+                display: block;
+                margin: 7px 0;
+            }
         }
         .perguntasContainer {
             width: 100%;
@@ -833,89 +900,204 @@ export const PerguntasDiv = styled.div`
 export const IndicarBannerDiv = styled.div`
     
     width: 100%;
-    min-height: 200px;
+    min-height: 160px;
     height: auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-image: url(${props=>props.bg});
+    background-image: url('/image/indique-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
 
-    .indicaMain {
+    .main {
         width: 100%;
-        max-width: 1100px;
+        max-width: 960px;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
-
-
-        .indicarLeft {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        justify-content: center;
-        
-
-        width: 50%;
-        min-width: 200px;
-        height: 100%;
-        padding: 10px;
-        
-        h1{
-            font-size: 1.4rem;
-            color: ${h1Color};
-        }
-
-        button{
+        span {
             width: 50%;
-            height: 40px;
-            max-width: 250px;
-            min-width: 150px;
-            font-weight: 600;
-
+            background-color: ${darkGreen};
+            color: white;
+            padding-left: 10px;
+        }
+        button {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
 
-            margin-top: 10px;
-            border-radius: 13px;
+            min-width: 160px;
+            max-width: 250px;
+            height: 40px;
 
-            background-color: ${pColor};
-            color: white;
+            border-radius: 8px;
+            margin-left: auto;
+            margin-right: 10px;
+            background-color: ${orangeBtn};
+            font-size: .9rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+    @media (max-width: 501px){
+        .main {
+            span {
+                width: 60%;
+                font-size: 80%;
+            }
+        }
+    }    
+`
+
+export const BlogDiv = styled.div`
+        width: 100%;
+        min-height: 265px;
+        .main {
+            width: 99%;
+            max-width: 960px;
+            min-height: 265px;
             
-            .shareIcon {
-                width: 20px;
-                height: 20px;
-                margin-left: 10px;
-                fill: ${greenbtn};
+            margin: 0 auto;
+            padding: 22.5px;
+        }
+        .title-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1 {
+                color: #6225B5;
+                font-weight: 600;
+                font-size: 1rem;
+                margin: 0;              
+
+                :after {
+                    content: '';
+                    width: 60px;
+                    height: 2px;
+                    background: ${Purple};
+                    display: block;
+                    margin: 7px 0;
+                }
+            }
+            h2 {
+                color: #6225B5;
+                font-weight: 600;
+                font-size: .8rem;
+                margin: 0;
+                
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                :after {
+                    content: '';
+                    width: 60px;
+                    height: 2px;
+                    background: ${Purple};
+                    display: block;
+                    margin: 7px 0;
+                }
             }
         }
 
-    }
+        .box-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
 
-    .indicarRight{ 
-        width: 50%;
-        height: 100%;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-
-        img{
             width: 100%;
-            max-width: 400px;
-            height: 70%;
-            max-height: 200px;
+            min-height: 170px;
+            
+            margin: 10px auto;
+        }
+        .card {
+            width: 24.5%;
+            max-width: 240px;
+            min-width: 210px;
+            height: 170px;
+            padding: 7.5px 15px;
+            cursor: pointer;
+            :hover {
+                background-color: ${darkGreen};
+                color: white;
+            }
+            img {
+                width: 100%;
+                height: 73px;
+                border-radius: 5px;
+            }
+            p {
+                font-size: .6rem;
+                font-weight: 300;
+            }
+            h3 {
+                font-size: .7rem;
+            }
+        }
 
+`
+export const SerieVoce = styled.div`
+    width: 100%;
+    min-height: 378px;
+    background-color: ${darkGreen};
+    .main {
+        width: 99%;
+        max-width: 960px;
+        min-height: 370px;
+        color: white;
+        margin: 0 auto;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 0;              
+
+            :after {
+                content: '';
+                width: 70px;
+                height: 2px;
+                background: white;
+                display: block;
+                margin: 7px 0;
+            }
+        }
+        p {
+            font-size: .8rem;
+        }
+        h3 {
+            font-size: 1rem;
+        }   
+    }
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        min-height: 100px;
+ 
+    }
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        width: 15.5%;
+        min-width: 105px;
+        height: 40px;
+
+        border-bottom: 2px solid white;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        a {
+            font-size: .8rem;
         }
     }
 
-    }
 `
 export const RestInfoDiv = styled.div`
     
@@ -926,9 +1108,9 @@ export const RestInfoDiv = styled.div`
     display: flex;
     justify-content: center;
 
-    .restMain {
-        width: 100%;
-        max-width: 1100px;
+    .main {
+        width: 99%;
+        max-width: 960px;
         
         min-height: 220px;
         height: auto;
@@ -936,7 +1118,8 @@ export const RestInfoDiv = styled.div`
         display: flex;
         flex-direction: column;
         
-        .restTop {
+    }
+    .restTop {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -945,103 +1128,105 @@ export const RestInfoDiv = styled.div`
             width: 100%;
             height: 140px;
             
-            border-bottom: 5px ${pColor} solid;
-
-            .list {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                height: 30%;
-                max-width: 1100px;
-
-                .hidden {
-                    display: flex;
-                    opacity: 0;
-                }
-
-                .hiddenmenu {
-                    display: none;
-                    font-size: 600;
-                    font-size: 0.9rem;
-                }
-
-                .divLeft {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    max-width: 200px;
-                    justify-content: space-around;
-                }
-
-                .restLogo {
-                    max-width: 150px;
-                    height: 20px;
-                }
+            border-bottom: 2px ${Purple} solid;
 
 
-            }
-            .bot {    
-                margin-top: 10px;
-                font-weight: 700;
-                font-size: 0.9rem;
-                width: 47% !important;
-                display: flex;
-                align-items: baseline;
-                justify-content: space-around;
-                
-            }
+    }
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: 30%;
+        max-width: 960px;
+    }
+    .hidden {
+            display: none;
+            opacity: 0;
+    }
+
+    .hiddenmenu {
+        display: none;
+        font-size: 600;
+        font-size: 0.9rem;
+    }
+
+    .divLeft {
+        display: flex;
+        align-items: center;
+        max-width: 250px;
+        justify-content: space-around;
+        a {
+            font-size: 1.1rem;
+            margin-left: 15px;
         }
-        .restBot {
-            width:100%;
-            min-height: 80px;
+    }
+    .bot {    
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        width: 47% ;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        
+    }
+    .restLogo {
+        width: 100px;
+        height: 22px;
+        margin-left: 10px;
+    }
+
+        
+    .restBot {
+        width:100%;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        padding-right: 5px;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
+    .left {
+        display: flex;
+        
+        div {
             display: flex;
             align-items: center;
-            padding-right: 5px;
-            justify-content: space-between;
+            margin-right: 10px;
 
-
-            .left {
-                display: flex;
-                
-                div {
-                    display: flex;
-                    align-items: center;
-                    margin-right: 10px;
-
-                    span {
-                        font-family: 'Poppins', sans-serif;
-                        font-size: 0.7rem;
-                        font-weight: 700;
-                        margin-left: 10px;
-                    }
-                }
-                .lIcon {
-                    width: 25px;
-                    height: 25px;
-                }
+            span {
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                margin-left: 10px;
             }
+        }
+        .lIcon {
+            width: 25px;
+            height: 25px;
+            margin-right: 6px;
+        }
+    }
 
-            .right {
-                display: flex;
-                align-items: center;
-                div {
-                    display: flex;
-                    align-items: center;
-                }
-                span {
-                    font-size: 0.8rem;
-                    font-weight: 700;
-                }
-                .socialIcons {
-                    width: 35px;
-                    height: 35px;
-                    margin-left: 10px;
-                    :hover {
-                        transform: scale(1.3);
-                        cursor: pointer;
-                    }
-                }
+    .right {
+        display: flex;
+        align-items: center;
+        div {
+            display: flex;
+            align-items: center;
+        }
+        span {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .socialIcons {
+            width: 35px;
+            height: 35px;
+            margin-left: 10px;
+            :hover {
+                transform: scale(1.3);
+                cursor: pointer;
             }
         }
     }

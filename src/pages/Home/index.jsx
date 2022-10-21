@@ -7,12 +7,12 @@ import LiPerguntas from '../../components/LiPerguntas'
 import Modal from '../../components/modal'
 import FuncionaCard from '../../components/FuncionaCards'
 import InputMask from 'react-input-mask'
-
-import indicarbg from '../../images/indicarbg.png'
+import NewSletterDiv from '../../components/NewSletter'
 
 import {BannerDiv, BannerTwo, UltimasDiv, ComoFuncionaDiv,
  PerguntasDiv, IndicarBannerDiv,RestInfoDiv, ParticiparDiv,
- MuralComunidade, PaticiparComunidade, OutrosDiv} from './homeStyled'
+ MuralComunidade, PaticiparComunidade, OutrosDiv, ModerarDiv,
+ BlogDiv, SerieVoce} from './homeStyled'
 
 import Email from '../../components/emailAutocompletee'
 import ModalError from '../../components/modalError'
@@ -759,25 +759,42 @@ export default function Home(){
           </div>
         </OutrosDiv>
 
+        <ModerarDiv>
+          <div className="main">
+            <div>
+              <h1>Quer ser moderador do vcsabia.online?</h1>
+              <a href="/">Clique aqui</a>
+            </div>
+          </div>
+        </ModerarDiv>
 
         <ComoFuncionaDiv>
           <div className="funcionaMain">
             <div className='funcionaTop'>
-                <h1>Como Funciona?</h1>
-                <p>Para receber os lembretes, basta você seguir os passos abaixo:</p>
+                <h1>Como funciona o VCSABIA ONLINE?</h1>
+                <p>para receber os posts, é só entrar no grupo de <a href="/">Whatsapp</a> ou <a href="/">Telegram</a> .</p>
+                <p>Mas se você quiser colaborar com a comunidade e escrever posts que serão enviados para mais de <span>100.000 membros</span>, basta você seguir os <span>passos abaixo:</span></p>
             </div>
             <div className='funcionaBottom'>
-                <FuncionaCard img={"/image/card1.png"} number={1} 
-                text={'Cadastre os horários que você termina suas refeições no nosso sistema.'}
+                <FuncionaCard 
+                img={"/image/step1.jpg"} 
+                number={1} 
+                text={'Cadastre seu nome e email, escolha um avatar e o seu apelido na comunidade'}
                 />
                 <FuncionaCard
-                  img={'/image/card2.png'} number={2} text={'cadastre seus dados e uma senha, para que você possa editar ou cancelar o envio dos lembretes aqui pelo site'}
+                  img={'/image/step2.jpg'} 
+                  number={2} 
+                  text={'Escreva seu post no mural, indicando ao menos uma fonte onde possamos checar a informação;'}
                 />
                 <FuncionaCard
-                  img={'/image/card3.png'} number={3} text={'Pronto! Todos os dias, ao fim de cada refeição, você receberá no zap um lembrete para escovar os dentes. O serviço é 100% gratuito e não precisa de instalação de nenhum tipo de aplicativo no seu celular.'}
+                  img={'/image/step3.jpg'} 
+                  number={3} 
+                  text={'Seu post será publicado no mural com o status de "não verificado". Após nossa equipe de editores conferir se as informações são verdadeiras, o status do post será alterado;'}
                 />
                 <FuncionaCard 
-                  img={'/image/card4.png'} number={4} text={'Se você quiser alterar os horários ou cancelar o envio dos lembretes, basta entrar aqui no site e acessar o sistema, usando a senha que você criou no momento do cadastro.'}
+                  img={'/image/step4.jpg'} 
+                  number={4} 
+                  text={'Os melhores posts do mural serão enviados para a comunidade, através dos grupos de whats e telegram e demais redes sociais.'}
                 />
             </div>
           </div>        
@@ -803,70 +820,213 @@ export default function Home(){
                 <h3>Punctuation conventions used in Chinese languages</h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
               </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
+              <LiPerguntas>
+                <h3>Punctuation conventions used in Chinese languages</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
+              </LiPerguntas>
             </div>
           </div>
         </PerguntasDiv>
 
-        <IndicarBannerDiv bg={indicarbg}>
-            <div className="indicaMain">
-            <div className="indicarLeft">
-                <h1>Título texto alerta de Sorte exemplo</h1>
-                <button> Indicar Amigos <BsFillShareFill className='shareIcon'/></button>
-            </div>
-            <div className="indicarRight">
-                <img src="/image/indicarimg.png" alt="conjuntodeimages" />
-            </div>
+        <IndicarBannerDiv>
+            <div className="main">
+              <span>
+                Indique seus amigos apaixonados pelo mundo animal
+                Indicar Amigos para se juntarem ao nosso grupo!
+              </span>
+              <button>Indique Amigos <BsFillShareFill/></button>
             </div>
         </IndicarBannerDiv>
 
-        <PerguntasDiv>
-            <div className="perguntasMain">
-              <h1>Perguntas Frequentes</h1>
-              <div className="perguntasContainer">
-              <LiPerguntas>
-                <h3>Punctuation conventions used in Chinese languages</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-              </LiPerguntas>
-              <LiPerguntas>
-                <h3>Punctuation conventions used in Chinese languages</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-              </LiPerguntas>
-              <LiPerguntas>
-                <h3>Punctuation conventions used in Chinese languages</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-              </LiPerguntas>
-              <LiPerguntas>
-                <h3>Punctuation conventions used in Chinese languages</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lore</p>
-              </LiPerguntas>
+        <BlogDiv>
+          <div className="main">
+            <div className="title-main">
+              <h1>Blog VCsabia.online</h1>
+              <h2>
+                <a href="/">
+                  &#62;&#62; ver mais
+                </a>
+              </h2>
+            </div>
+
+            <div className="box-cards">
+              <div className="card">
+                  <p>24-03-2022</p>
+                  <img src="/image/banner-index.jpg" alt="" />
+                  <h3>Título do post exemplo</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
+              </div>
+              <div className="card">
+                  <p>24-03-2022</p>
+                  <img src="/image/banner-index.jpg" alt="" />
+                  <h3>Título do post exemplo</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
+              </div>
+              <div className="card">
+                  <p>24-03-2022</p>
+                  <img src="/image/banner-index.jpg" alt="" />
+                  <h3>Título do post exemplo</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
+              </div>
+              <div className="card">
+                  <p>24-03-2022</p>
+                  <img src="/image/banner-index.jpg" alt="" />
+                  <h3>Título do post exemplo</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
               </div>
             </div>
-        </PerguntasDiv>
+          </div>
+        </BlogDiv>
+
+        <SerieVoce>
+          <div className="main">
+            <h1>Série Vc Sabia?</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <h3>+ Saíba Mais</h3>
+            <h3>Conheça nossas outras ferramentas:</h3>
+            <div className="links">
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              <div className="link">
+                <BtnFlip 
+                  text={'/copadomundo'} 
+                  color={'white'} 
+                  secondColor={'#6225B5'}
+                />
+              </div>
+              
+            </div>
+          </div>
+        </SerieVoce>
 
         <RestInfoDiv>
-          <div className="restMain">
+          <div className="main">
             <div className="restTop">
               <div className="list">
                 <span className='hiddenmenu baseColor'>Menu</span>
                 <div className='divLeft'>
                   <VscDebugStackframeDot className='baseColor hidden'/>
-                  <BtnFlip className='textleft' text={'Quem somos'} />
+                  <BtnFlip 
+                    className='textleft' 
+                    text={'Quem somos'} 
+                    color={'#6225B5'}
+                    secondColor={'black'}
+                  />
                 </div>
                 <div className='divLeft'>
                   <VscDebugStackframeDot className='baseColor point'/>
-                  <BtnFlip text={'Termos de uso'}/>
+                  <BtnFlip 
+                    text={'Termos de uso'}
+                    color={'#6225B5'}
+                    secondColor={'black'}
+                  />
                 </div>
                 <div className='divLeft'>
                   <VscDebugStackframeDot className='baseColor point'/>
-                  <BtnFlip text={'Calendário de Sorteios'}/>
+                  <BtnFlip 
+                    text={'Anuncie'}
+                    color={'#6225B5'}
+                    secondColor={'black'}
+                  />
                 </div>
                 <div className='divLeft'>
                   <VscDebugStackframeDot className='baseColor point'/>
-                  <BtnFlip text={'Fale conosco'}/>
+                  <BtnFlip 
+                    text={'Fale conosco'}
+                    color={'#6225B5'}
+                    secondColor={'black'}
+                  />
                 </div>
                 <div className='divLeft'>
                   <VscDebugStackframeDot className='baseColor point'/>
-                  <BtnFlip text={'Politica de privacidade'}/> 
+                  <BtnFlip 
+                    text={'Politica de privacidade'}
+                    color={'#6225B5'}
+                    secondColor={'black'}
+                  /> 
                 </div> 
               </div>
               <div className="bot">
@@ -880,11 +1040,17 @@ export default function Home(){
               <div className='left'>
                 <div onClick={()=>{setModalDescadastrar(true)}}>
                   <RiUserUnfollowFill className='lIcon baseColor'/>
-                  <BtnFlip text={'descadastrar'}/>
+                  <BtnFlip 
+                    text={'descadastrar'}
+                    color={'#6225B5'}
+                  />
                 </div>
                 <div onClick={()=> setModalReportar(true)}>
                   <MdReportProblem className='lIcon baseColor'/>
-                  <BtnFlip text={'reportar erro'}/>
+                  <BtnFlip 
+                    text={'reportar erro'}
+                    color={'#6225B5'}
+                  />
                 </div>
               </div>
 
@@ -893,12 +1059,12 @@ export default function Home(){
                   compartilhe:
                 </span>
                 <div>
-                  <img src="/image/wppicon.png" alt="wppicon" className='socialIcons'/>
-                  <img src="/image/teleicon.png" alt="telegramicon" className='socialIcons'/>
-                  <img src="/image/instaicon.png" alt="instagramicon" className='socialIcons'/>
-                  <img src="/image/faceicon.png" alt="facebookicon" className='socialIcons'/>
-                  <img src="/image/tticon.png" alt="twittericon" className='socialIcons'/>
-                  <img src="/image/linkIcon.png" alt="linkedinicon" className='socialIcons'/>
+                  <img src="/image/whats-footer.svg" alt="wppicon" className='socialIcons'/>
+                  <img src="/image/telegram-footer.svg" alt="telegramicon" className='socialIcons'/>
+                  <img src="/image/insta-footer.svg" alt="instagramicon" className='socialIcons'/>
+                  <img src="/image/face-footer.svg" alt="facebookicon" className='socialIcons'/>
+                  <img src="/image/twitter-footer.svg" alt="twittericon" className='socialIcons'/>
+                  <img src="/image/linkedin-footer.svg" alt="linkedinicon" className='socialIcons'/>
                 </div>
               </div>
             </div>
@@ -906,6 +1072,7 @@ export default function Home(){
         </RestInfoDiv>
 
         <Footer/>
+        <NewSletterDiv/>
     </>
   )
 }

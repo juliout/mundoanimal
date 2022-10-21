@@ -1,18 +1,14 @@
 import styled from 'styled-components'
 
-const pColor = '#3eb54e'
-const cardColor = '#cffcde'
-const h1Color = '#095e57'
 
 export const FuncionaA = styled.a`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    
+        
 
-    width: 250px;
-    height: 350px;
+    width: 210px;
+    height: 302px;
     margin: 0 10px;
     margin-top: 25px;
     
@@ -26,13 +22,14 @@ export const FuncionaA = styled.a`
         width: 35px;
         height: 35px;
         
-        background-color: ${cardColor};
-        border: 10px solid ${cardColor};
+        background-color: #f0f0f0;
+        border: 10px solid #f0f0f0;
         border-radius: 60px;
-        margin: 20px 0 10px 0;
+        margin: 10px 0 7px 0;
 
-        color: ${h1Color};
-        font-weight: 700;
+        color: #6225B5;
+        font-weight: 400;
+        font-size: .9rem;
         font-family: 'Noto Sans', sans-serif;
     }
 
@@ -42,18 +39,20 @@ export const FuncionaA = styled.a`
         text-shadow: 1px 0px 3px #006f90;
     }
     p {
-        width: 90%;
+        width: 95%;
         max-width: 230px;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.75rem;
+        text-align: center;
+        font-weight: 400;
         color: #919191;
         font-family: 'Poppins', sans-serif;
     }
 
     img {
         margin-top: auto;
-        width: 70%;
-        max-width: 200px;
+        margin-bottom: 5px;
+        width: 150px;
+        height: 130px;
         filter: grayscale(100%);
         filter: gray; /* IE */
         :hover {

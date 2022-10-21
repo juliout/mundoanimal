@@ -19,9 +19,9 @@ export const HeaderDiv = styled.header`
     justify-content: center;
     }
     .container {
-        width: 100%;
+        width: 99%;
         height: 57px;
-        max-width: 950px;
+        max-width: 960px;
         display: flex;
         align-items: center;
         height: 100%;
