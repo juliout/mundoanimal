@@ -982,7 +982,7 @@ export default function Home(){
           </div>
         </SerieVoce>
 
-        <RestInfoDiv>
+        {/* <RestInfoDiv>
           <div className="main">
             <div className="restTop">
               <div className="list">
@@ -1069,7 +1069,7 @@ export default function Home(){
               </div>
             </div>
           </div> 
-        </RestInfoDiv>
+        </RestInfoDiv> */}
 
         <Footer/>
         <NewSletterDiv/>
