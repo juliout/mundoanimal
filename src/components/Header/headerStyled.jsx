@@ -75,7 +75,7 @@ export const HeaderDiv = styled.header`
             }
         }        
     }
-
+///////////////////////media //////////////
     @media (max-width: 626px){
         .main{
             padding: 40px;
