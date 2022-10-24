@@ -10,18 +10,18 @@ export const HeaderDiv = styled.header`
     display: flex;
     align-items: center;
     .main {
-    background-color: #0C3900;
-    width: 100%;
-    min-height: 57px;
-    height: auto;
-    color: white;
-    -webkit-box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        background-color: #0C3900;
+        width: 100%;
+        min-height: 57px;
+        height: auto;
+        color: white;
+        -webkit-box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
+        box-shadow: 0px 7px 19px -2px rgba(0,0,0,0.75);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .container {
         width: 99%;

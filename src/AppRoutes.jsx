@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
 import AuthProvider, { AuthContext } from './contexts/auth'
 // import Route from './routes/Route'
 import Home from './pages/Home'
-import Painel from './pages/Painel'
+import PostPage from './pages/Post'
 
 export default function AppRoutes() {
     const Private = ({children}) => {
@@ -27,7 +27,7 @@ export default function AppRoutes() {
         <AuthProvider>
             <Routes>
                 <Route exact path='/' element={<Logado><Home/></Logado>}/>
-                <Route exact path='/user/painel' element={<Private><Painel/></Private>} isPrivate/> 
+                <Route exact path='/post' element={<PostPage/>}/>
             </Routes>
         </AuthProvider>
       </BrowserRouter> 
