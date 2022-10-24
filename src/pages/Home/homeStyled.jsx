@@ -36,17 +36,16 @@ export const BannerDiv = styled.section`
     .rpbanner {
         
         width: 100%;
-        height: 68px;
+        min-height: 68px;
         display: flex;
         align-items: flex-end;
         margin-bottom: 20px;
 
         h1{
             width: 50%;
-            height: 100%;
             background-color: ${darkGreen};
-
-            font-size: 1.5rem;
+            padding: 5px 0;
+            font-size: 1.3rem;
             font-weight: 700;
             color: white;
             padding-left: 10px;
@@ -60,7 +59,7 @@ export const BannerDiv = styled.section`
             width: 30%;
             max-width: 250px;
             height: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-left: auto;
             margin-right: 5%;
@@ -77,28 +76,57 @@ export const BannerDiv = styled.section`
             }
         }
     }
+
+    @media (max-width: 425px) {
+        .rpbanner {
+            h1 {
+                width: 60%;
+                font-size: 1.1rem;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+    }
+    @media (max-width: 375px) {
+        .rpbanner {
+            h1 {
+                font-size: .8rem;
+            }
+            button {
+                font-size: .8rem;
+            }
+        }
+    }
    
 `
 export const BannerTwo = styled.div`
     background-color: #ccc;
     width: 100%;
-    height: 203px;
+    min-height: 203px;
     padding: 15px 0;
     margin: 15px 0;
+    display: flex;
+    align-items: center;
     .main {
         width: 100%;
         max-width: 960px;
-        height: 100%;
-        margin: auto;
+        min-height: 150px;
+        margin: 0 auto;
         display: flex;
+        align-items: center;
         justify-content: space-evenly;
+        flex-wrap: wrap;
     }
     .card {
         background-color: red;
         width: 32%;
-        height: 100%;
+        min-width: 250px;
+        height: 175px;
         display: flex;
         align-items: flex-end;
+        margin-bottom: 10px;
+        margin-right: 2px;
         :hover {
             cursor: pointer;
             span {
@@ -173,9 +201,40 @@ export const BannerTwo = styled.div`
     }
     .telnot {
         width: 32%;
+        min-width: 100px;
+        max-width: 100px;
         transform: translateY(10px);
-        margin-right: 10px;
+        margin-right: 5px;
         cursor: pointer;
+    }
+
+    @media (max-width: 753px) {
+        .card {
+            min-width: 400px;
+            height: 190px;
+        }
+    }
+    @media (max-width: 426px) {
+        .card {
+            min-width: 420px;
+            height: 200px;
+        }
+    }
+    @media (max-width: 375px) {
+        .card {
+            min-width: 360px;
+            height: 180px;
+        }
+    }
+    @media (max-width: 321px) {
+        .card {
+            min-width: 315px;
+            height: 175px;
+        }
+        .telnot {
+            width: 30%;
+            min-width: 80px;
+        }
     }
 
 `
@@ -221,14 +280,14 @@ export const  UltimasDiv = styled.div`
         height: auto;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        
     }
     .card-post {
 
         width: 32%;
-        min-width: 250px;
+        min-width: 245px;
         height: 193px;
-        margin-left: 10px;
+        margin-left: 7px;
         padding: 0 22.5px 15px 22.5px;
         text-align: left;
         cursor: pointer;
@@ -271,6 +330,18 @@ export const  UltimasDiv = styled.div`
         margin-bottom: 10px;
     }
 
+    @media (max-width: 767px) {
+        .card-post {
+            width: 48%;
+        }
+    }
+    @media (max-width: 511px) {
+        .card-post {
+            width: 99%;
+            height: 150px;
+        }
+    }
+
 `
 export const ParticiparDiv = styled.div`
     background: url('/image/participar-bg.jpg');
@@ -280,12 +351,12 @@ export const ParticiparDiv = styled.div`
     width: 100%;
     height: 172.5px;
     margin-top: 20px;
-
+    display: flex;
+    justify-content: center;
     .main {
         width: 100%;
-        height: 100%;
+        height: 99%;
         max-width: 960px;
-        margin: 0 auto;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -360,6 +431,7 @@ export const MuralComunidade = styled.div`
         p{
             font-size: .8rem;
             font-weight: 400;
+            text-align: right;
         }
         
         input {
@@ -416,7 +488,7 @@ export const MuralComunidade = styled.div`
     .box-posts {
         width: 100%;
         min-height: 200px;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-bottom: 10px;
         height: auto;
         
@@ -443,11 +515,13 @@ export const MuralComunidade = styled.div`
         color: #6225B5;
         font-size: 1.1rem;
         font-weight: 600;
+        margin-bottom: 7px;
     }
     .div-user {
         height: 42px;
         display: flex;
         align-items: center;
+        margin: 15px 0;
     }
     .user-image {
         width: 42px;
@@ -656,7 +730,7 @@ export const OutrosDiv = styled.div`
         width: 24%;
         max-width: 218px;
         min-width: 218px;
-        height: 140px;
+        min-height: 140px;
         padding: 7.5px;
         margin-bottom: 10px;
         :hover {
@@ -688,6 +762,19 @@ export const OutrosDiv = styled.div`
         margin-top: 5px;
         font-size: .75rem;
         font-weight: 400;
+    }
+
+    @media (max-width: 681px) {
+        .card-outros {
+            width: 200px;
+            min-width: 200px;
+        }
+    }
+    @media (max-width: 375px) {
+        .card-outros {
+            width: 95%;
+            max-width: none;
+        }
     }
 `
 
@@ -731,6 +818,18 @@ export const ModerarDiv = styled.div`
             }
         }
     }
+
+    @media (max-width: 425px) {
+        .main {
+            div {
+                margin: 0 auto;
+            }
+            h1, a {
+                width: 300px;
+                background-color: #ffffff76;
+            }
+        }
+    }
 `
 
 export const ComoFuncionaDiv = styled.div`
@@ -743,7 +842,7 @@ export const ComoFuncionaDiv = styled.div`
     justify-content: center;
     
     .funcionaMain {
-        width: 99%;
+        width: 98%;
         max-width: 960px;
         height: 100%;
 
@@ -1018,6 +1117,7 @@ export const BlogDiv = styled.div`
             min-width: 210px;
             height: 170px;
             padding: 7.5px 15px;
+            margin-bottom: 5px;
             cursor: pointer;
             :hover {
                 background-color: ${darkGreen};
@@ -1028,12 +1128,47 @@ export const BlogDiv = styled.div`
                 height: 73px;
                 border-radius: 5px;
             }
+            .card-date {
+                font-size: .6rem;
+                font-weight: 300;            
+            }
             p {
                 font-size: .6rem;
                 font-weight: 300;
+                margin: 0 auto;
             }
             h3 {
                 font-size: .7rem;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 45%;
+                height: 200px;
+                max-width: none;
+                img {
+                    height: 90px;
+                }
+            }
+        }
+        @media (max-width: 426px) {
+            .card {
+                width: 95%;
+                
+                height: 220px;
+                max-width: none;
+                display: flex;
+                flex-direction: column;
+                img {
+                    max-width: 300px;
+                    height: 90px;
+                    margin: 0 auto;
+                }
+                p {
+                    font-size: .9rem;
+                }
             }
         }
 
@@ -1120,15 +1255,15 @@ export const RestInfoDiv = styled.div`
         
     }
     .restTop {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            
-            width: 100%;
-            height: 140px;
-            
-            border-bottom: 2px ${Purple} solid;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        width: 100%;
+        min-height: 140px;
+        
+        border-bottom: 2px ${Purple} solid;
 
 
     }
@@ -1229,5 +1364,66 @@ export const RestInfoDiv = styled.div`
                 cursor: pointer;
             }
         }
+    }
+
+    @media (max-width: 620px) {
+        .divLeft { 
+            height: 100%;
+            a {
+                font-size: .9rem;
+                margin-left: 0;
+            }
+        }
+
+        .restBot {
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 460px) {
+        .restTop {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+        .list {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 0;
+            height: 100%;
+            width: 50%;
+            padding-top: 5px;
+        }
+        .bot {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            height: 90%;
+            
+            margin-left: 10px;
+        }
+        .hidden {
+            display: flex;
+            opacity: 1;
+        }
+        .hiddenmenu {
+            display: flex;
+        }
+    }
+    @media (max-width: 350px) {
+        .list {
+
+            width: 70%;
+        }
+
+       .right {
+        flex-direction: column;
+        width: 40%;
+        span {
+            margin: 10px;
+        }
+       }
     }
 `

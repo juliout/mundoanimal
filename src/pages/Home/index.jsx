@@ -859,25 +859,25 @@ export default function Home(){
 
             <div className="box-cards">
               <div className="card">
-                  <p>24-03-2022</p>
+                  <p className='card-date'>24-03-2022</p>
                   <img src="/image/banner-index.jpg" alt="" />
                   <h3>Título do post exemplo</h3>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
               </div>
               <div className="card">
-                  <p>24-03-2022</p>
+                  <p className='card-date'>24-03-2022</p>
                   <img src="/image/banner-index.jpg" alt="" />
                   <h3>Título do post exemplo</h3>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
               </div>
               <div className="card">
-                  <p>24-03-2022</p>
+                  <p className='card-date'>24-03-2022</p>
                   <img src="/image/banner-index.jpg" alt="" />
                   <h3>Título do post exemplo</h3>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
               </div>
               <div className="card">
-                  <p>24-03-2022</p>
+                  <p className='card-date'>24-03-2022</p>
                   <img src="/image/banner-index.jpg" alt="" />
                   <h3>Título do post exemplo</h3>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply.</p>
@@ -982,7 +982,7 @@ export default function Home(){
           </div>
         </SerieVoce>
 
-        {/* <RestInfoDiv>
+        <RestInfoDiv>
           <div className="main">
             <div className="restTop">
               <div className="list">
@@ -1069,7 +1069,7 @@ export default function Home(){
               </div>
             </div>
           </div> 
-        </RestInfoDiv> */}
+        </RestInfoDiv>
 
         <Footer/>
         <NewSletterDiv/>

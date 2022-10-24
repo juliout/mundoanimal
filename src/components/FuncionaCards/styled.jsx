@@ -61,4 +61,15 @@ export const FuncionaA = styled.a`
         }
     }
 
+    @media (max-width:425px) {
+        width: 200px;
+        height: 300px;
+        margin: 15px 2px;
+    }
+    @media (max-width:425px) {
+        width: 250px;
+        height: 310px;
+        margin: 15px 2px;
+    }
+
 `

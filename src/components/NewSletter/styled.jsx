@@ -7,6 +7,8 @@ export const NewSletterDiv = styled.div`
     position: fixed;
     bottom: 0;
     border-top: 4px solid white;
+    display: flex;
+    align-items: center;
     .main {
         display: flex;
         align-items: center;
@@ -113,12 +115,23 @@ export const NewSletterDiv = styled.div`
                 margin: 3px 0 ;
             }
         }
-    }
-    @media (max-width: 645px) {
+
         .main {
-            flex-direction: column;
             p {
                 margin: 5px 0;
+            }
+        }
+        
+    }
+
+    @media (max-width: 465px) { 
+        .main {
+            display: flex;
+            flex-direction: column;
+            div{
+                p {
+                    
+                }
             }
         }
     }
