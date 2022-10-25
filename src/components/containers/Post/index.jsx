@@ -1,5 +1,7 @@
 import {PostDiv} from './styled'
 
+import BtnDefault from '../../BtnDefault'
+
 export default function Post(){
     return (
         <PostDiv>
@@ -79,34 +81,148 @@ export default function Post(){
                                 <p>TAG 7</p>                            
                                 <p>TAG 8</p>                            
                                 <p>TAG 9</p>
-                        </div>
-
-                        <div className="title-comentarios">
-                            <p>0 Comentários</p>
-                            <div>
-                                <span>Classificado por:</span>
-                                <select name="ordem-comentario" id="ordem-comentario">
-                                    <option value="antigos">Mais Antigos</option>
-                                    <option value="recentes">Mais Recentes</option>
-                                </select>
-                            </div>
-                        </div>
-                        
+                        </div>                       
+                            
                         <div className="create-comentario">
-
-                        </div>
-                        
-                        <div className="create-comentario-fb">
-
+                                                                                                       
                         </div>
 
                         <div className="mais-voce-sabia">
-
+                            <h1>
+                                + VCSABIA / MUNDO ANIMAL
+                            </h1>
+                            <div className="caixa-cards">
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div href='/' className="cards">
+                                    <p className="header"> 24-03-2020 <span>22h</span></p>
+                                    <h2 className="title"> TITULO EXEMPLO</h2>
+                                    <p className="caixatexto">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                
+                                
+                            </div>
                         </div>
 
                     </div>
                     <div className="right">
-                        
+                        <div className="box-top">
+
+                        </div>
+                        <div className="more-posts-online">
+                            <h1>+ VCSABIA ONLINE</h1>
+                            <div className="posts">
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <div className="post">
+                                    <a href="/">
+                                        <div className="post-header">
+                                            <img src="/image/fcb.png" alt="" />
+                                            <div>
+                                                <p>24/03/2022 - 21h30</p>
+                                                <h3>Título Exemplo de duas em caixa baixa</h3>   
+                                            </div>
+                                        </div>
+                                        <p className="text-bottom">
+                                            texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo Exemplo de duas linhas em caixa baixa texto subtítulo...
+                                    </p>
+                                    </a>
+                                </div>
+                                <BtnDefault type='ver-mais' className='btn-default'/>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <img 

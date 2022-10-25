@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react'
 import './style.css'
 
 
-export default function BtnDefault({type}) {
+export default function BtnDefault({type, className}) {
 
     const VerMais = () => {
         return (
-            <button className='post-vermais-btn'>Ver mais</button>
+            <button className={`post-vermais-btn ${className}`}>Ver mais</button>
         )
     }
 
     const Participar = () => {
         return (
-            <button className='participar-btn'>Participar</button>
+            <button className={`participar-btn ${className}`  }>Participar</button>
         )
     }
 
