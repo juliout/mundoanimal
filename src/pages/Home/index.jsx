@@ -18,7 +18,7 @@ import RestInfo from '../../components/containers/RestInfo'
 import Footer from '../../components/containers/Footer'
 import NewSletterDiv from '../../components/containers/NewSletter'
 //modais e alerts
-import Modal from '../../components/modal'
+import Descadastrar from '../../components/modais/Descadastrar'
 import MCadastro from './ModalCadastro/index'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,15 +27,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../contexts/auth'
 import { useContext } from 'react'
 
-
-
 export default function Home(){
 
   const { Login } = useContext(AuthContext)
 
   const [plataform, setPlataform] = useState('whatsapp')
-  const [modalDescadastrar, setModalDescadastrar] = useState(false)
-  const [modalReportar , setModalReportar] = useState(false)
+
 
   const [cadastrar, setCadastrar] = useState(false)
   const [formCadastro, setFormCadastro] = useState({})
@@ -45,9 +42,6 @@ export default function Home(){
       <>
         <Header />
           {cadastrar === true ? <MCadastro setCadastrar={setCadastrar} form={formCadastro}/> : null}
-          {modalDescadastrar === true ? <Modal type={'descadastrar'} Modal={setModalDescadastrar}/> : null}
-          {modalReportar === true ? <Modal type={'reportarError'} Modal={setModalReportar}/> : null}
-          
           {/* container do alerta*/}
           <ToastContainer
             position="top-center"

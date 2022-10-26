@@ -1,13 +1,41 @@
+import { useState } from 'react'
+
 import {RestInfoDiv} from './styled'
 import BtnFlip from '../../BtnFlip'
+import Descadastrar from '../../modais/Descadastrar'
+import ReportError from '../../modais/report'
 
 import {VscDebugStackframeDot} from 'react-icons/vsc'
 import {RiUserUnfollowFill} from 'react-icons/ri'
 import {MdReportProblem} from 'react-icons/md'
 
 export default function RestInfo() {
+    const [modalDescadastrar, setModalDescadastrar] = useState(false)
+    const [modalReportar , setModalReportar] = useState(false)
+
+    async function OpenModal(e, component) {
+      e.preventDefault()
+      if(component === 'descadastrar'){
+        setModalDescadastrar(true)
+      }else if (component === 'reportError'){
+        setModalReportar(true)
+      }
+    }
+
+
     return (
         <RestInfoDiv>
+
+          {modalDescadastrar ? <Descadastrar 
+           modalClose={setModalDescadastrar}
+           colorBg={'#0C3900'}
+          /> : null}
+          {modalReportar ? <ReportError 
+            modalClose={setModalReportar}
+            colorBg={'#0C3900'}
+          /> : null}
+
+
           <div className="main">
             <div className="restTop">
               <div className="list">
@@ -63,14 +91,14 @@ export default function RestInfo() {
             </div>
             <div className="restBot">
               <div className='left'>
-                <div onClick={()=>{}}>
+                <div onClick={(e)=>{OpenModal(e,'descadastrar')}}>
                   <RiUserUnfollowFill className='lIcon baseColor'/>
                   <BtnFlip 
                     text={'descadastrar'}
                     color={'#6225B5'}
                   />
                 </div>
-                <div onClick={()=>{} }>
+                <div onClick={(e)=>{OpenModal(e, 'reportError')} }>
                   <MdReportProblem className='lIcon baseColor'/>
                   <BtnFlip 
                     text={'reportar erro'}
