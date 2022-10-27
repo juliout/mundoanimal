@@ -7,7 +7,9 @@ export const AuthContext = createContext()
 
 export default function AuthProvider({ children }){
     const [usuario, setUsuario] = useState(null);
- 
+    const [ typeG, setTypeG] = useState('')
+    const [ EntrarG, setEntrarG ] = useState(false)
+
     const navigate = useNavigate()
     useEffect(()=>{
         async function loadUsuario(){
@@ -54,9 +56,30 @@ export default function AuthProvider({ children }){
         return window.location.reload()
     }
 
-    // function storageSave(data){
-    //     localStorage.setItem('userToken',JSON.stringify(data))
-    // }
+    async function typeClick (type) {
+        console.log(type)
+        if (type === 'whatsapp'){
+          setTypeG('whatsapp')
+          return setEntrarG(true)
+        }
+        if (type === 'telegram'){
+          setTypeG('telegram')
+          return setEntrarG(true)
+        }
+        if (type === 'mail'){
+          setTypeG('mail')
+          return setEntrarG(true)
+        }
+        if (type === 'notification'){
+          setTypeG('notification')
+          return setEntrarG(true)
+        }
+        if (type === 'megafone'){
+            setTypeG('megafone')
+            return setEntrarG(true)
+          }
+        return
+      }
 
     async function cancelarCadastro(){
         const token = {
@@ -83,7 +106,12 @@ export default function AuthProvider({ children }){
                 usuario, 
                 Login,
                 Sair,
-                cancelarCadastro
+                cancelarCadastro,
+                typeG,
+                setTypeG,
+                typeClick,
+                EntrarG,
+                setEntrarG
             }}>
             {children}
         </AuthContext.Provider>

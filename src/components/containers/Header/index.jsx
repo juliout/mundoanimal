@@ -1,9 +1,12 @@
 import {HeaderDiv} from './headerStyled'
-import { useState } from 'react'
+import { useState, useContext} from 'react'
 import HbMenu from './menu-hb'
 import QuemSomos from '../../modais/QuemSomos'
 import FaleConosco from '../../modais/FaleConosco'
-import Participe from '../../modais/Participe'
+import { AuthContext } from '../../../contexts/auth'
+import EntrarGrupo from '../../modais/EntrarGrupo'
+
+
 
 // import { Link } from 'react-router-dom'
 // import { useState, useContext, useEffect } from 'react'
@@ -13,6 +16,8 @@ export default function Header({sendLogin}) {
     const [menu, setMenu] = useState(false)
     const [quem, setQuem] = useState(false)
     const [fale, setFale] = useState(false)
+
+    const {typeG, typeClick, EntrarG, setEntrarG} = useContext(AuthContext)
   
     async function Openhb() {
         if(!menu) {
@@ -21,6 +26,9 @@ export default function Header({sendLogin}) {
             setMenu(false)
         }
     }
+
+
+
     return (
         <>
         <HeaderDiv>
@@ -46,8 +54,16 @@ export default function Header({sendLogin}) {
                     <div className='hicons'>
                         <span>Particiapar por:</span>
                         <div>
-                            <img src="/image/hwpp.png" alt="logo com simbolo do wpp" />
-                            <img src="/image/htele.png" alt="logo com simbolo do telegram" />
+                            <img 
+                                src="/image/hwpp.png" 
+                                alt="logo com simbolo do wpp"
+                                onClick={()=> {typeClick('whatsapp')}} 
+                                />
+                            <img 
+                                src="/image/htele.png" 
+                                alt="logo com simbolo do telegram" 
+                                onClick={()=> {typeClick('telegram')}} 
+                            />
                         </div>
                     </div>
                 </div>
@@ -55,6 +71,7 @@ export default function Header({sendLogin}) {
         </HeaderDiv>
         {quem? <QuemSomos closeq={setQuem}/> : null}
         {fale? <FaleConosco closef={setFale}/> : null}
+        {EntrarG ? <EntrarGrupo type={typeG} EParticipe={setEntrarG}/> : null}
         </>
     )
 }

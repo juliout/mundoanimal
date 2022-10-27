@@ -26,10 +26,12 @@ import 'react-toastify/dist/ReactToastify.css';
 //copntext
 import { AuthContext } from '../../contexts/auth'
 import { useContext } from 'react'
+import ShareS from '../../components/SessionShare'
+import NotificationButtom from '../../components/NotificationButtom'
 
 export default function Home(){
 
-  const { Login } = useContext(AuthContext)
+  const { Login, EntrarG, setEntrarG } = useContext(AuthContext)
 
   const [plataform, setPlataform] = useState('whatsapp')
 
@@ -72,6 +74,9 @@ export default function Home(){
         <RestInfo/>
         <Footer/>
         <NewSletterDiv/>
+        
+        <ShareS/>
+        <NotificationButtom/>
     </>
   )
 }
