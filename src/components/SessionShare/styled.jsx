@@ -35,5 +35,8 @@ export const ShareDiv = styled.div`
             }
         }
     }
+    @media (max-width: 546px) {
+        display: none;
+    }
     
 `

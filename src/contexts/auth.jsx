@@ -57,7 +57,6 @@ export default function AuthProvider({ children }){
     }
 
     async function typeClick (type) {
-        console.log(type)
         if (type === 'whatsapp'){
           setTypeG('whatsapp')
           return setEntrarG(true)

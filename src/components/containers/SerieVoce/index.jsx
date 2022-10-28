@@ -4,7 +4,7 @@ import BtnFlip from '../../BtnFlip'
 export default function SerieVoce() {
     return (
         <SerieVoceDiv>
-        <div className="main">
+        <div className="main" data-aos='fade-up'>
           <h1>Série Vc Sabia?</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
           <h3>+ Saíba Mais</h3>

@@ -1,6 +1,6 @@
+import BtnVerMais from '../../BtnDefault/btnVermais'
 import {PostDiv} from './styled'
 
-import BtnDefault from '../../BtnDefault'
 
 export default function Post(){
     return (
@@ -219,7 +219,7 @@ export default function Post(){
                                     </p>
                                     </a>
                                 </div>
-                                <BtnDefault type='ver-mais' className='btn-default'/>
+                                <BtnVerMais className='btn-default'/>
                             </div>
                         </div>
 

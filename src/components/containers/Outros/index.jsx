@@ -1,10 +1,10 @@
+import BtnVerMais from '../../BtnDefault/btnVermais'
 import {OutrosDiv} from './styled'
 
-import BtnDefault from '../../BtnDefault'
 
 export default function Outros() {
     return (
-        <OutrosDiv>
+        <OutrosDiv data-aos=''>
           <div className="main">
             <h2 className='outro-title'>Outros VCsabia</h2>
 
@@ -193,7 +193,7 @@ export default function Outros() {
               </div>
             </div>
 
-            <BtnDefault type='ver-mais'/>
+            <BtnVerMais/>
           </div>
         </OutrosDiv>
 

@@ -2,7 +2,7 @@ import {ShareDiv} from './styled'
 
 export default function ShareS() {
     return (
-        <ShareDiv>
+        <ShareDiv data-aos='fade-right'>
             <div className="mainShare">
                 <h3>
                     Compartilhe :

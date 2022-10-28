@@ -49,4 +49,11 @@ export const ButtonDiv = styled.div `
             }
         }
     }
+
+    @media (max-width: 642px) {
+        bottom: 90px;
+    }
+    @media (max-width: 575px) {
+        display: none;
+    }
 `

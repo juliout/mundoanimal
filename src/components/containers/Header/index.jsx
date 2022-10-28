@@ -50,7 +50,7 @@ export default function Header({sendLogin}) {
                             </div>
                         </label>
                     </div>
-                    <img src="/image/logo.png" alt="logo escrito mundo animal" className='hlogo'/>
+                    <img src="/image/logo.png" alt="logo escrito mundo animal" className='hlogo' />
                     <div className='hicons'>
                         <span>Particiapar por:</span>
                         <div>

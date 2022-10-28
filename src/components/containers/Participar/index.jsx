@@ -1,5 +1,5 @@
 import {ParticiparDiv} from './styled'
-import BtnDefault from '../../BtnDefault'
+import BtnParticipar from '../../BtnDefault/btnParticipar'
 
 export default function Participar() {
     return (
@@ -10,7 +10,7 @@ export default function Participar() {
             <p>Participe da nossa comunidade e escreva no mural!</p>
             <p>Os melhores posts serão enviados para os mais de 100.000 membros da nossa comunidade!</p>
           </div>
-          <BtnDefault type='participar'/>
+          <BtnParticipar/>
         </div>
       </ParticiparDiv>
 

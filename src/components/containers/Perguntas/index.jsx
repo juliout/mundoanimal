@@ -3,7 +3,7 @@ import LiPerguntas from '../../LiPerguntas'
 
 export default function Perguntas() {
     return (
-        <PerguntasDiv>
+        <PerguntasDiv data-aos='fade-up'>
         <div className="perguntasMain">
           <h1>Perguntas Frequentes</h1>
           <div className="perguntasContainer">

@@ -12,24 +12,28 @@ export default function ComoFunciona() {
           </div>
           <div className='funcionaBottom'>
               <FuncionaCard 
-              img={"/image/step1.jpg"} 
-              number={1} 
-              text={'Cadastre seu nome e email, escolha um avatar e o seu apelido na comunidade'}
+                img={"/image/step1.jpg"} 
+                number={1} 
+                text={'Cadastre seu nome e email, escolha um avatar e o seu apelido na comunidade'}
+                flip='right'
               />
               <FuncionaCard
                 img={'/image/step2.jpg'} 
                 number={2} 
                 text={'Escreva seu post no mural, indicando ao menos uma fonte onde possamos checar a informação;'}
+                flip='left'
               />
               <FuncionaCard
                 img={'/image/step3.jpg'} 
                 number={3} 
                 text={'Seu post será publicado no mural com o status de "não verificado". Após nossa equipe de editores conferir se as informações são verdadeiras, o status do post será alterado;'}
+                flip='down'
               />
               <FuncionaCard 
                 img={'/image/step4.jpg'} 
                 number={4} 
                 text={'Os melhores posts do mural serão enviados para a comunidade, através dos grupos de whats e telegram e demais redes sociais.'}
+                flip='left'
               />
           </div>
         </div>        

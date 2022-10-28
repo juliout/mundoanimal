@@ -1,8 +1,9 @@
 import {BlogDiv} from './styled'
 
 export default function Blog() {
+
     return (
-        <BlogDiv>
+        <BlogDiv data-aos='fade-up'>
         <div className="main">
           <div className="title-main">
             <h1>Blog VCsabia.online</h1>

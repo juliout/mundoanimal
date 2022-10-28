@@ -13,7 +13,7 @@ export default function NotificationButtom () {
     return (
         <>
             <ButtonDiv>
-                <div className="btnMain">
+                <div className="btnMain" data-aos='fade-down'>
                     <div className="menu">
                         <li>
                             <img 

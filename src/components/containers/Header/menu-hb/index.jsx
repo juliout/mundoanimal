@@ -15,8 +15,8 @@ export default function HbMenu ({openClose, quemSomos, faleConosco}) {
     }
     return (
         <>
-        <MenuHb close={openClose}>
-            <nav>
+        <MenuHb close={openClose} >
+            <nav data-aos='zoom-in'>
                 <a href='*' onClick={(e)=> hbModais(e,'quem-somos')}>Quem Somos</a>
                 <a href='/'>Como Funciona</a>
                 <a href='/'>Blog</a>

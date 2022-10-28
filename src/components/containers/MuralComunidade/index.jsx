@@ -5,12 +5,12 @@ import {RiArrowDownSFill} from 'react-icons/ri'
 import {FaShare} from 'react-icons/fa'
 import {IoMdThumbsUp} from 'react-icons/io'
 import {GoVerified} from 'react-icons/go'
+import BtnVerMais from '../../BtnDefault/btnVermais'
 
-import BtnDefault from '../../BtnDefault'
 
-export default function MuralComunidade() {
+export default function MuralComunidade() {  
     return (
-        <MuralComunidadeDiv>
+        <MuralComunidadeDiv data-aos='fade-up'>
         <div className="main">
           <h2 className='mural-title'>Mural da Comunidade</h2>
 
@@ -234,7 +234,7 @@ export default function MuralComunidade() {
           </div>
           {/* final aqui */}
           
-          <BtnDefault type='ver-mais'/>
+          <BtnVerMais/>
         </div>      
       </MuralComunidadeDiv>
 
