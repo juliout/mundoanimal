@@ -5,7 +5,7 @@ import {BsFillShareFill} from 'react-icons/bs'
 export default function Indicar() {
     return (
     <IndicarBannerDiv>
-        <div className="main" data-aos='fade-left'>
+        <div className="main" data-aos='fade-up'>
             <span>
             Indique seus amigos apaixonados pelo mundo animal
             Indicar Amigos para se juntarem ao nosso grupo!

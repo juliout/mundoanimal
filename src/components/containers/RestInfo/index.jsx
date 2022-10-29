@@ -37,7 +37,7 @@ export default function RestInfo() {
 
 
           <div className="main">
-            <div className="restTop" data-aos='fade-left'>
+            <div className="restTop" data-aos='fade-up'>
               <div className="list">
                 <span className='hiddenmenu baseColor'>Menu</span>
                 <div className='divLeft'>
@@ -89,7 +89,7 @@ export default function RestInfo() {
                 <img src="/image/genera.png" alt="logogenera" className='restLogo'/>
               </div>
             </div>
-            <div className="restBot" data-aos='fade-right'>
+            <div className="restBot" data-aos='fade-down'>
               <div className='left'>
                 <div onClick={(e)=>{OpenModal(e,'descadastrar')}}>
                   <RiUserUnfollowFill className='lIcon baseColor'/>

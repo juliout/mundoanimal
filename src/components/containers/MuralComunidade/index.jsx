@@ -10,11 +10,11 @@ import BtnVerMais from '../../BtnDefault/btnVermais'
 
 export default function MuralComunidade() {  
     return (
-        <MuralComunidadeDiv data-aos='fade-up'>
+        <MuralComunidadeDiv >
         <div className="main">
           <h2 className='mural-title'>Mural da Comunidade</h2>
 
-          <form className="create-post">
+          <form className="create-post" data-aos='fade-up'>
             <div className="line-one">
               <input type="text" name='title-post' id='post-title' placeholder='Título'/>
               <p>Restam 2000 caracteres</p>
@@ -28,7 +28,7 @@ export default function MuralComunidade() {
             <img src="/image/filter-solid.svg" alt="imagem de um filtro de posts"/>
           </div>
           {/* caixa do post e do comentario --- separar */}
-          <div className="box-posts">
+          <div className="box-posts" data-aos='fade-up'>
             <div className="post-container">
               <h1 className='titulos-posts'>Título exemplo chamada</h1>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>

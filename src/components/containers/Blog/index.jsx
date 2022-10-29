@@ -3,8 +3,8 @@ import {BlogDiv} from './styled'
 export default function Blog() {
 
     return (
-        <BlogDiv data-aos='fade-up'>
-        <div className="main">
+        <BlogDiv >
+        <div className="main" data-aos='fade-up'>
           <div className="title-main">
             <h1>Blog VCsabia.online</h1>
             <h2>

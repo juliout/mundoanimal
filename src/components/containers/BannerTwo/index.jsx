@@ -18,9 +18,9 @@ export default function BannerTwo() {
         <div 
           className="card bg1" 
           onClick={()=>{setParticipe(true)}}
-          data-aos='fade-right'
+          data-aos='fade-up'
         >
-          <div className='card-text' data-aos='fade-right'>
+          <div className='card-text' data-aos='fade-up'>
             <span>
               Todos os dias, posts com curiosidades sobre os bichos que compartilham o mundo com a gente!
             </span>
@@ -31,13 +31,13 @@ export default function BannerTwo() {
           onClick={()=>{setParticipe(true)}}
           data-aos='fade-down'
         >
-          <div className='card-text div-right' data-aos='fade-left'>
+          <div className='card-text div-right' data-aos='fade-up'>
             <span>
               Entre nos nossos grupos de "loucos por bichos" e receba o melhor conteúdo sobre o mundo animal
             </span>
           </div>
         </div>
-        <div className="card bg3" data-aos='fade-left'>
+        <div className="card bg3" data-aos='fade-up'>
           <div className="cardleft">
             <p>Você escolhe onde quer receber nossos posts</p>
             <div className='groupnot'>
