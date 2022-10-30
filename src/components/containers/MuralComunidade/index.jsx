@@ -1,43 +1,126 @@
 import {MuralComunidadeDiv} from './styled'
 
 import BtnVerMais from '../../BtnDefault/btnVermais'
-
-import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../../contexts/auth'
+import { Api } from '../../../api'
+import ModalSucess from '../../modalSucess'
 
 import CaixaPostagem from './CaixaPostagem'
+import ModalError from '../../modalError'
 
-export default function MuralComunidade({className}) {  
-    const {allPosts, setReloadPosts } = useContext(AuthContext)
+export default function MuralComunidade({className}) {
+    
+    const {allPosts, setReloadPosts, reloadPosts, limit, setLimit } = useContext(AuthContext)
+    const [data, setData] = useState(allPosts)
+    const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
+    const [link, setLink] = useState('')
+    const navigate = useNavigate()
+  
+    const [ usuario, setUsuario]= useState(false)
+
+    useEffect(()=>{
+      if (limit >= 6) {
+        navigate('/forum')
+      }
+    },[limit])
+
+
+
+    async function SendPostMural(e) {
+      e.preventDefault()
+      if(!usuario){
+        return ModalError('Por favor Faça seu login')
+      }
+      try {
+        await Api.post('/createpost', {
+          title: title,
+          text: text,
+          link: link,
+          type: 'mundo-animal',
+          user_id: usuario
+        }).then(response =>{
+          ModalSucess('Publicado no mural')
+          reloadPosts(3)
+          setTitle('')
+          setLink('')
+          setText('')
+        }).catch(e=>{
+          throw new Error(e.message)
+        })
+      } catch (error) {
+        ModalError(error.data.message)
+      }
+    }
+
+    function morePosts() {
+      reloadPosts(limit+1)
+      setLimit(limit+1)
+    }
+    
 
     return (
         <MuralComunidadeDiv className={className || ''}>
+          
         <div className="main">
           <h2 className='mural-title'>Mural da Comunidade</h2>
 
-          <form className="create-post" data-aos='fade-up'>
+  
+          <form 
+            className="create-post" 
+            data-aos='fade-up' 
+            method='post' 
+            onSubmit={(e)=>{SendPostMural(e)}}
+          >
             <div className="line-one">
-              <input type="text" name='title-post' id='post-title' placeholder='Título'/>
+              <input 
+                type="text" 
+                name='title-post' 
+                id='post-title' 
+                placeholder='Título'
+                value={title}
+                onChange={(e)=>{setTitle(e.target.value)}}
+                disabled={usuario ? false : true}
+              />
               <p>Restam 2000 caracteres</p>
             </div>
-            <textarea name="post-textarea" id="post-textarea" cols="30" rows="10" placeholder='Texto'/>
-            <input type="text" name="link-post" id="link-post" placeholder='Link/Fonte'/>
+            <textarea 
+              ame="post-textarea" 
+              id="post-textarea" 
+              cols="30" 
+              rows="10" 
+              placeholder='Texto'
+              value={text}
+              onChange={(e)=>{setText(e.target.value)}}
+              disabled={usuario ? false : true}
+            />
+            <input 
+              type="text" 
+              name="link-post" 
+              id="link-post" 
+              placeholder='Link/Fonte'
+              value={link}
+              onChange={(e)=>{setLink(e.target.value)}}
+              disabled={usuario ? false : true}
+            />
             <button className='post-btn-enviar'>Enviar</button>
           </form>
+  
 
           <div className='organizar-post'>
             <p>Organizar por :</p>
             <img src="/image/filter-solid.svg" alt="imagem de um filtro de posts"/>
           </div>
           
-          {allPosts ? allPosts.map((value, index)=>{
-            
+          {allPosts ? allPosts.map((value,index)=>{
             return (
               <CaixaPostagem data={value} key={index}/>
             )
           }) : null}
           
-          <BtnVerMais/>
+          <BtnVerMais onClick={()=> morePosts()}/>
         </div>      
       </MuralComunidadeDiv>
 

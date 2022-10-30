@@ -6,14 +6,18 @@ import {HiUserCircle} from 'react-icons/hi'
 import {IoMdThumbsUp} from 'react-icons/io'
 
 import {ComentarioDiv} from './styled'
+import ModalError from '../../../modalError'
 
 export default function CaixaComentario({data}) {
-  const usuario = 3
+  const usuario = false
   const [curtirTxt, setCurtirTxt] = useState(false)
   const [value, setValue] = useState(data)
 
   
   useEffect(()=> {
+    if(!usuario){
+      return
+    }
     const {comentarioCurtidas} = data
     function curtiu () {
       comentarioCurtidas.forEach(element => {
@@ -23,21 +27,23 @@ export default function CaixaComentario({data}) {
       })
     }
     curtiu()
-  },[data])
+  },[])
 
   async function realodComentario(comentario_id) {
     const response = await Api.post('/comentario', {
       id: comentario_id
     })
     if (!response.data.message) {
-      console.log(response.data)
       setValue(response.data)
     }
   }
 
-  async function curtida(comentario_id, user_id) {
+  async function curtida(comentario_id) {
+    if(!usuario) {
+      return ModalError('por favor faça o login')
+    }
     const response = await Api.post('/curtidacomentario', {
-      user_id: user_id,
+      user_id: usuario,
       comentario_id: comentario_id
     })
     if(response.data.message === 'curtido') {
@@ -60,7 +66,7 @@ export default function CaixaComentario({data}) {
         <div className="bot">
           <button 
             className={`btn-comentario-curtir ${curtirTxt ? 'curtido' : ''}`}
-            onClick={()=> {curtida(value.id, usuario)}}
+            onClick={()=> {curtida(value.id)}}
           >
               curtir
           </button>

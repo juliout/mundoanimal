@@ -10,28 +10,28 @@ export default function AuthProvider({ children }){
     const [ typeG, setTypeG ] = useState('')
     const [ EntrarG, setEntrarG ] = useState(false)
     const [ allPosts, setAllPosts ] = useState('')
-
+    const [ limit, setLimit] = useState(3)
     const navigate = useNavigate()
     useEffect(()=>{
         async function loadUsuario(){
 
         let usuarioStorage = localStorage.getItem('userToken')
 
-            if(usuarioStorage){
-                usuarioStorage  = JSON.parse(usuarioStorage)
-                await Api.post('/session', {
-                    id: usuarioStorage.id,
-                    token: usuarioStorage.token
-                })
-                .then(async response => {
-                    setUsuario(usuarioStorage)
-                    return navigate('/user/painel')                        
-                })
-                .catch(async response=> {
-                    await ModalError('Logue novamenete')
-                    localStorage.removeItem('userToken')
-                })
-            }
+        if(usuarioStorage){
+            usuarioStorage  = JSON.parse(usuarioStorage)
+            await Api.post('/session', {
+                id: usuarioStorage.id,
+                token: usuarioStorage.token
+            })
+            .then(async response => {
+                setUsuario(usuarioStorage)
+                return navigate('/user/painel')                        
+            })
+            .catch(async response=> {
+                await ModalError('Logue novamenete')
+                localStorage.removeItem('userToken')
+            })
+        }
         
     }
     loadUsuario()
@@ -39,17 +39,36 @@ export default function AuthProvider({ children }){
 
     useEffect(()=> {
         async function findAllPost(){
-            const response = await Api.post('/allposts')
-            if (response) {
-                setAllPosts(response.data)               
-            }
-            else{
-                console.log('não foi possivel Carregar os posts')
+            try {
+                await Api.post('/allposts', {limit: limit}).then(response=> {
+                    setAllPosts(response.data)
+                })
+            } catch (error) {
+                ModalError(error.data.message)
             }
         }
         findAllPost() 
     },[])
-    
+    async function reloadPosts (limit) {
+        try {
+            if(limit) {
+                await Api.post('/allposts', {limit: limit}).then(response=>{
+                    setAllPosts(response.data)
+                }).catch(e=>{
+                    throw new Error(e.message)
+                })
+            }else {
+                await Api.post('/allposts').then(response=>{
+                    setAllPosts(response.data)
+                }).catch(e=>{
+                    throw new Error(e.message)
+                })
+            }
+            
+        } catch (error) {
+            console.log(error.message)
+        }
+      }
     async function Login(login){
         const response = await Api.post('/login', login).catch(async response=> {
             if(!response.response.data){
@@ -125,6 +144,9 @@ export default function AuthProvider({ children }){
                 EntrarG,
                 setEntrarG,
                 allPosts,
+                reloadPosts,
+                setLimit,
+                limit
             }}>
             {children}
         </AuthContext.Provider>

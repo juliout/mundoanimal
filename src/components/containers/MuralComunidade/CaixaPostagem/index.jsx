@@ -10,12 +10,11 @@ import {FaShare} from 'react-icons/fa'
 import {RiArrowDownSFill} from 'react-icons/ri'
 import {AiFillHeart, AiOutlineHeart, AiFillWechat} from 'react-icons/ai'
 import { useEffect, useState } from "react"
+import ModalError from "../../../modalError"
 
 
 export default function CaixaPostagem ({data, index}) {
-   
-  
-    const usuario = 3
+    const usuario = false
     const dataAtual = new Date();
     const anoAtual = dataAtual.getFullYear();
     const [comentarioCurtido, setComentarioCurtido] = useState(false)
@@ -60,6 +59,12 @@ export default function CaixaPostagem ({data, index}) {
         return anoAtual - nascido[0]
       }
 
+      function reverseDate(date) {
+        let data = date
+        data = date.split('-').reverse()
+        let final = `${data[0]}/${data[1]}/${data[2]}`
+        return final
+      }
       async function reloadPost (post_id) {
         const response = await Api.post('/post', {
           id: post_id
@@ -67,14 +72,13 @@ export default function CaixaPostagem ({data, index}) {
         if (!response.data.message) {
           setValue(response.data)
         }
-
       }
       
-      async function curtida(post_id, user_id){
-
+      async function curtida(post_id){
+        if(!usuario) return ModalError('por favor faça o login')
         const response = await Api.post('/curtidapost',{
           post_id : post_id,
-          user_id : user_id
+          user_id : usuario
         })
         if (response.data.message === 'curtido') {
           await reloadPost(post_id)
@@ -87,6 +91,7 @@ export default function CaixaPostagem ({data, index}) {
 
       async function createComentario(e){
         if(e.code === 'Enter'){
+          if(!usuario) return ModalError('faça o login')
           await Api.post('/createcomentario', {
             text : e.target.value,
             user_id : usuario,
@@ -108,12 +113,12 @@ export default function CaixaPostagem ({data, index}) {
                 <HiUserCircle className='user-image'/>
                 <div>
                 <p>{`${value.user.name} - ${idade(value.user.datanascimento)} - ${value.user.genero} `}</p>
-                <p>{`${value.user.cidade} -  criado as ----, x horas atras`}</p>
+                <p>{`${value.user.cidade} - criado : ${reverseDate(value.createdAt)}`}</p>
                 </div>
             </div>
             <div className="interact">
                 <div className="btns-interact">
-                <button onClick={()=> curtida(value.id, value.user_id, value.postCurtidas)}>
+                <button onClick={()=> curtida(value.id)}>
                     {comentarioCurtido ? 
                     <AiFillHeart
                       className='interact-icons-fill'
