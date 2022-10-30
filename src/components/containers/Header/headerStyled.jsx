@@ -183,7 +183,8 @@ export const HeaderDiv = styled.header`
     @media (max-width: 426px) {
         .main {
             .container {
-                min-width: 415px;
+                width: 370px;
+                
             }
             .hlogo {
                 margin-left: 25%;
@@ -193,7 +194,7 @@ export const HeaderDiv = styled.header`
     @media (max-width: 376px) {
         .main {
             .container {
-                min-width: 360px;
+                min-width: 340px;
             }
             .hlogo {
                 margin-left: 20%;

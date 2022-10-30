@@ -17,9 +17,7 @@ export default function Ultimas() {
   const [contador, setContador] = useState(3)
 
   function add () {
-    console.log(contador)
     setContador(contador+1)
-    console.log(contador)
     if(contador <= baseDados.length) {
       setDados(baseDados.slice(0, contador))
     }else {

@@ -1,0 +1,14 @@
+.muralForum {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 645px){
+    .muralForum {
+        margin-bottom: 90px;
+    }
+}
+@media (max-width: 450px){
+    .muralForum {
+        margin-bottom: 130px;
+    }
+}

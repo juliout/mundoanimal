@@ -118,13 +118,14 @@ export const BannerTwoContainer = styled.div`
     }
     @media (max-width: 426px) {
         .card {
-            min-width: 420px;
+            max-width: 400px;
+            min-width: 360px;
             height: 200px;
         }
     }
     @media (max-width: 375px) {
         .card {
-            min-width: 360px;
+            min-width: 340px;
             height: 180px;
         }
     }

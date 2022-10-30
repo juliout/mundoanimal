@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react'
+import { useState, createContext, useEffect, useReducer } from 'react'
 import {Api} from '../api'
 import ModalError from '../components/modalError';
 import ModalSucess from '../components/modalSucess';
@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom'
 export const AuthContext = createContext()
 
 export default function AuthProvider({ children }){
-    const [usuario, setUsuario] = useState(null);
-    const [ typeG, setTypeG] = useState('')
+    const [ usuario, setUsuario ] = useState(null);
+    const [ typeG, setTypeG ] = useState('')
     const [ EntrarG, setEntrarG ] = useState(false)
+    const [ allPosts, setAllPosts ] = useState('')
 
     const navigate = useNavigate()
     useEffect(()=>{
@@ -34,7 +35,19 @@ export default function AuthProvider({ children }){
         
     }
     loadUsuario()
+    },[])
 
+    useEffect(()=> {
+        async function findAllPost(){
+            const response = await Api.post('/allposts')
+            if (response) {
+                setAllPosts(response.data)               
+            }
+            else{
+                console.log('não foi possivel Carregar os posts')
+            }
+        }
+        findAllPost() 
     },[])
     
     async function Login(login){
@@ -110,7 +123,8 @@ export default function AuthProvider({ children }){
                 setTypeG,
                 typeClick,
                 EntrarG,
-                setEntrarG
+                setEntrarG,
+                allPosts,
             }}>
             {children}
         </AuthContext.Provider>

@@ -2,7 +2,7 @@ import BtnVerMais from '../../BtnDefault/btnVermais'
 import {PostDiv} from './styled'
 
 
-export default function Post(){
+export default function Post({data}){
     return (
         <PostDiv>
             <div className="main">

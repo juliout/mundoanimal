@@ -13,12 +13,27 @@ import Perguntas from '../../components/containers/Perguntas'
 import RestInfo from '../../components/containers/RestInfo'
 import SerieVoce from '../../components/containers/SerieVoce'
 import Post from '../../components/containers/Post'
+import { useParams } from 'react-router-dom'
+import { data } from '../../components/array'
+import { useEffect, useState } from 'react'
 
 export default function PostPage() {
+    const {idpost} = useParams()
+    const [post, setPost] = useState('')
+
+    useEffect(()=> {
+        const x = data.filter(fill => {
+            if (fill.id === idpost) {
+                return fill
+            }
+        })
+        setPost(x)
+    },[])
+
     return(
         <>
             <Header/>
-            <Post/>
+            {post ? <Post data={post}/> : null}
             <Participar/>
             <MuralComunidade/>
             <ParticiparComu/>
