@@ -9,6 +9,7 @@ import ModalSucess from '../../modalSucess'
 
 import CaixaPostagem from './CaixaPostagem'
 import ModalError from '../../modalError'
+import { ToastContainer } from 'react-toastify'
 
 export default function MuralComunidade({className}) {
     
@@ -63,11 +64,20 @@ export default function MuralComunidade({className}) {
 
     return (
         <MuralComunidadeDiv className={className || ''}>
-          
+
+          <ToastContainer
+            position="top-center"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />          
         <div className="main">
           <h2 className='mural-title'>Mural da Comunidade</h2>
-
-  
           <form 
             className="create-post" 
             data-aos='fade-up' 
