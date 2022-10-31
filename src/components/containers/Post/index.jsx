@@ -22,10 +22,10 @@ export default function Post(){
                     setPost(response.data)
                 })
                 .catch(error => {
-                    throw new Error(error.message)
+                    throw new Error(error)
                 })
             } catch (error) {
-                return ModalError(error.message)
+                return ModalError(error)
             }
         }
         findAdmPost()
