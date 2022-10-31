@@ -2,13 +2,10 @@ import styled from "styled-components";
 
 export const ShareDiv = styled.div`
     position: fixed;
-    left: 0;
+    left: 20px;
     top: 12%;
 
     .mainShare {
-        width: 100px;
-        height: 400px;
-        margin-left: 20px;
         
         display: flex;
         flex-direction: column;

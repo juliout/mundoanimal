@@ -13,22 +13,20 @@ import { ToastContainer } from 'react-toastify'
 
 export default function MuralComunidade({className}) {
     
-    const {allPosts, setReloadPosts, reloadPosts, limit, setLimit } = useContext(AuthContext)
-    const [data, setData] = useState(allPosts)
+    const {allPosts, reloadPosts, limit, setLimit } = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-  
     const [ usuario, setUsuario]= useState(false)
 
     useEffect(()=>{
+      
       if (limit >= 6) {
+        if(!usuario) return ModalError('faça o login')
         navigate('/forum')
       }
     },[limit])
-
-
 
     async function SendPostMural(e) {
       e.preventDefault()
@@ -57,6 +55,7 @@ export default function MuralComunidade({className}) {
     }
 
     function morePosts() {
+      if(!usuario) return ModalError('faça seu login')
       reloadPosts(limit+1)
       setLimit(limit+1)
     }
@@ -94,13 +93,14 @@ export default function MuralComunidade({className}) {
                 onChange={(e)=>{setTitle(e.target.value)}}
                 disabled={usuario ? false : true}
               />
-              <p>Restam 2000 caracteres</p>
+              <p>Restam {500 - text.length} caracteres</p>
             </div>
             <textarea 
               ame="post-textarea" 
               id="post-textarea" 
               cols="30" 
-              rows="10" 
+              rows="10"
+              maxLength={500} 
               placeholder='Texto'
               value={text}
               onChange={(e)=>{setText(e.target.value)}}

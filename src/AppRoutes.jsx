@@ -28,7 +28,7 @@ export default function AppRoutes() {
         <AuthProvider>
             <Routes>
                 <Route  path='/' element={<Home/>}/>
-                <Route  path='/post/:idpost' element={<PostPage/>}/>
+                <Route  path='/post/:idpost/:namepost' element={<PostPage/>}/>
                 <Route  path='/forum' element={<Forum/>}/>
             </Routes>
         </AuthProvider>

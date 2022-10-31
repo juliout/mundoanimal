@@ -1,16 +1,16 @@
 import {UltimasDiv} from './styled'
 import BtnVerMais from '../../BtnDefault/btnVermais'
 
-import {data} from '../../array'
 import { useEffect, useState, useContext } from 'react'
 import { Divisor } from '../../../functions/DivisorArray'
 import ContainerPosts from '../../ContainerPosts'
 import {AuthContext} from '../../../contexts/auth'
-import EntrarGrupo from '../../modais/EntrarGrupo'
+import axios from 'axios'
+import ModalError from '../../modalError'
 
 export default function Ultimas() {
 
-  const {typeG, typeClick, EntrarG, setEntrarG} = useContext(AuthContext)
+  const {typeClick, setEntrarG} = useContext(AuthContext)
 
   const [dados, setDados] = useState('')
   const [baseDados, setBaseDados] = useState('')
@@ -23,15 +23,33 @@ export default function Ultimas() {
     }else {
       typeClick('whatsapp')
       setEntrarG(true)
-    }
-    
+    } 
   }
-
+  
   useEffect( ()=>{
-    const x = Divisor(data, 9)
-    setDados(x.slice(0, contador)) 
-    setBaseDados(x)
-    setContador(contador+1)
+
+    const data = async () => {
+      try {
+        axios.get('https://agregador.bigdates.com.br:3010/postsPagina/mundoanimal')
+        .then(response=> { 
+          setarrays(response.data)
+        })
+        .catch(error=> {
+          throw new Error(error.message)
+        })
+      } catch (error) {
+        return ModalError(error.message)
+      }
+    }
+    data()
+    function setarrays(array){
+      const x = Divisor(array, 9)
+      console.log(x)
+      setDados(x.slice(0, contador)) 
+      setBaseDados(x)
+      setContador(contador+1)
+    }
+
   },[])
   
   return (
@@ -49,7 +67,6 @@ export default function Ultimas() {
         </div>
        <BtnVerMais onClick={()=> add()} />
       </div>
-      {EntrarG? <EntrarGrupo type={typeG} EParticipe={setEntrarG}/> : null}
     </UltimasDiv>
 
   )

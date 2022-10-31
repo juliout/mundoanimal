@@ -2,13 +2,11 @@
 
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/auth'
-
-import EntrarGrupo from '../modais/EntrarGrupo'
 import {ButtonDiv} from './styled'
 
 
 export default function NotificationButtom () {
-    const {typeG, typeClick, EntrarG, setEntrarG} = useContext(AuthContext)
+    const {typeClick} = useContext(AuthContext)
 
     return (
         <>
@@ -43,7 +41,6 @@ export default function NotificationButtom () {
                     <button className='btn-more'>+</button>
                 </div>
             </ButtonDiv>
-            {EntrarG ? <EntrarGrupo EParticipe={setEntrarG} type={typeG}/> : null}
         </>
     )
 }

@@ -52,7 +52,7 @@ export const PostDiv = styled.div`
     .content {
         margin-bottom: 45px;
         h1 {
-            font-size: 2.3rem;
+            font-size: 2rem;
             font-weight: 400;
             margin: 10px 0;
         }
@@ -60,6 +60,10 @@ export const PostDiv = styled.div`
             font-size: .8rem;
             line-height: 1.2rem;
             margin-bottom: 15px;
+        }
+        img {
+            width: 520px;
+            height: 520px;
         }
     }
     .compartilhe {
@@ -78,6 +82,7 @@ export const PostDiv = styled.div`
     .tags{
         display: flex;
         margin-top: 20px;
+        margin-bottom: 30px;
         p {
             width: 42px;
             height: 22.5px;

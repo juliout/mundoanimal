@@ -14,7 +14,11 @@ export const CardDiv = styled.div`
     cursor: pointer;
     margin-bottom: 1%;
     line-height: 1.2rem;
-            
+    color: black;
+
+    a {
+        color: #6225B5;
+    }
     p {
         font-size: .7rem;
         color: ${silver};
@@ -37,6 +41,9 @@ export const CardDiv = styled.div`
         border-radius: 5px;
         span {
             color: ${white};
+        }
+        a {
+            color: white;
         }
     }
 

@@ -1,15 +1,11 @@
 import { useContext, useState } from 'react'
 import {BannerTwoContainer} from './styled'
 import Participe from '../../modais/Participe'
-import EntrarGrupo from '../../modais/EntrarGrupo'
 import { AuthContext } from '../../../contexts/auth'
 
 export default function BannerTwo() {
-
   const [ participe, setParticipe] = useState(false)
-  const {typeG, typeClick, EntrarG, setEntrarG} = useContext(AuthContext)
-
- 
+  const {typeClick} = useContext(AuthContext)
 
   return (
     <>
@@ -81,7 +77,6 @@ export default function BannerTwo() {
       </div>
     </BannerTwoContainer>
     {participe ? <Participe cParticipe={setParticipe}/> : null}
-    {EntrarG ? <EntrarGrupo type={typeG} EParticipe={setEntrarG}/> : null}
     </>
   )
 }

@@ -1,15 +1,23 @@
 import { Link } from 'react-router-dom'
 import {CardDiv} from './styled'
 
-export default function CardPost({id, date, title, text}){
+export default function CardPost({data}){
+    const {
+        post_id,
+        post_titulo,
+        post_web_texto,
+        formatted_date,
+        post_data_time
+    } = data
+
     return (
-        <CardDiv className="card-post" data-aos='zoom-in'>
-            <Link to={`/post/${id}`}>
+        <CardDiv  data-aos='zoom-in'>
+            <Link to={`/post/${post_id}/${post_titulo}`}>
                 
-                    <p>{date}</p>
-                    <h2>{title}</h2>
+                    <p>{`${post_data_time} - ${formatted_date}`}</p>
+                    <h2>{post_titulo}</h2>
                     <span>
-                        {text}
+                        {post_web_texto}
                     </span>
             </Link>
         </CardDiv>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ButtonDiv = styled.div `
     position: fixed;
     bottom: 70px;
-    left: 53px;
+    left: 40px;
 
     .btnMain {
         :hover .menu{

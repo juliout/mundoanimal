@@ -8,10 +8,7 @@ export default function ContainerPosts({data}) {
                     data.map((d, index)=>{
                         return (
                             <CardPost
-                                id={d.id}
-                                date={d.date}
-                                title={d.title}
-                                text={d.text}
+                                data={d}
                                 key={index}
                             />
                         )

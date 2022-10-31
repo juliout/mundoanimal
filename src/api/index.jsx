@@ -5,5 +5,5 @@ export const Api = axios.create({
 })
 
 export const ApiPrivate = axios.create({
-  baseURL: 'http://localhost:3030/',
+  baseURL: process.env.REACT_APP_BIGDATE_URL
 })
