@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { ApiPrivate } from '../../../api'
 import ModalError from '../../modalError'
-import { ToastContainer } from 'react-toastify'
+
 
 
 export default function Post(){
@@ -49,17 +49,7 @@ export default function Post(){
 
     return (
         <PostDiv>
-            <ToastContainer
-            position="top-center"
-            autoClose={1000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+           
             <div className="main">
                 <img 
                     src="/image/banner-get.jpg" 
@@ -143,7 +133,7 @@ export default function Post(){
                             </div>                       
                             
                             <div className="create-comentario" id="fb-root">
-                            <div className="fb-comments" data-href={`http://localhost:3000/post/${idpost}/${post_web_title}`} data-width="600" data-numposts="5"></div>                                          
+                            <div className="fb-comments" data-href={`https://mundoanimal.vercel.app/post/${idpost}/${post_web_title}`} data-width="600" data-numposts="5"></div>                                          
                             </div>
 
                             <div className="mais-voce-sabia">
