@@ -18,6 +18,7 @@ export default function Post(){
             try {
                 await ApiPrivate.get(`/posts/${idpost}`)
                 .then(response=> {
+                    console.log(response.data)
                     setPost(response.data)
                 })
                 .catch(error => {
