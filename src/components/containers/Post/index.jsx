@@ -134,7 +134,7 @@ export default function Post(){
                             </div>                       
                             
                             <div className="create-comentario" id="fb-root">
-                            <div class="fb-comments" data-href="https://mundoanimal.vercel.app/post" data-width="600" data-numposts="5"></div>                                          
+                            <div className="fb-comments" data-href={`https://mundoanimal.vercel.app/post/${idpost}/${post_web_title}`} data-width="600" data-numposts="5"></div>                                          
                             </div>
 
                             <div className="mais-voce-sabia">
