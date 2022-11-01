@@ -1,56 +1,37 @@
 import BtnVerMais from '../../BtnDefault/btnVermais'
 import {PostDiv} from './styled'
-import {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
-import { ApiPrivate } from '../../../api'
-import ModalError from '../../modalError'
+import {useState, useEffect, useContext} from 'react'
+import { ToastContainer } from 'react-toastify'
+import Facebook from '../../Facebook'
+import CommentsExample from '../../ComentFb'
 
+export default function PostContainer({data}){
+    console.log(data)
 
+    let {
+        post_web_tag_title,
+        post_id,
+        post_web_title,
+        post_web_texto,
+        post_data_time,
+        post_imagem
 
-export default function Post(){
-    const {idpost} = useParams()
-    const [post, setPost] = useState('')
-
-
-    useEffect(()=> {
-
-        async function findAdmPost() {
-            try {
-                await ApiPrivate.get(`/posts/${idpost}`)
-                .then(response=> {
-                    console.log(response.data)
-                    setPost(response.data)
-                })
-                .catch(error => {
-                    throw new Error(error)
-                })
-            } catch (error) {
-                return ModalError(error)
-            }
-        }
-        findAdmPost()
-    },[])
-
-
-    if (post) {
-        var {
-            post_web_tag_title,
-            post_id,
-            post_web_title,
-            post_web_texto,
-            post_data_time,
-            post_imagem
+    } = data[0]
     
-        } = post[0]
-    }
     
-    useEffect(()=>{ 
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v15.0" nonce="YitMizt5"></script>
-    },[])
-
     return (
         <PostDiv>
-           
+            <ToastContainer
+            position="top-center"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
             <div className="main">
                 <img 
                     src="/image/banner-get.jpg" 
@@ -58,7 +39,7 @@ export default function Post(){
                     className='banner-get'
                 />
                 <div className="post-div">
-                    {post ? 
+                     
                         <div className="left">
                             <div className="navigation">
                                 <li>
@@ -70,9 +51,9 @@ export default function Post(){
                                         data
                                     </a>
                                     /
-                                    {post ? <a href={`/post/${post[0].post_id}/${post[0].post_web_title}`} className="links-navegation">
+                                    <a href={`/post/${data[0].post_id}`} className="links-navegation">
                                         {post_web_tag_title}
-                                    </a> : ' '}
+                                    </a>
                                 </li>                  
                             </div>
                             <div className="content">
@@ -132,11 +113,8 @@ export default function Post(){
                                     <p>TAG 8</p>                            
                                     <p>TAG 9</p>
                             </div>                       
-                            
-                            <div className="create-comentario" id="fb-root">
-                            <div className="fb-comments" data-href={`https://mundoanimal.vercel.app/post/${idpost}/${post_web_title}`} data-width="600" data-numposts="5"></div>                                          
-                            </div>
-
+                                    {/* <Facebook/> */}
+                                    <CommentsExample/>
                             <div className="mais-voce-sabia">
                                 <h1>
                                     + VCSABIA / MUNDO ANIMAL
@@ -179,7 +157,6 @@ export default function Post(){
 
                         </div>
                     
-                    : null}
                     <div className="right">
                         <div className="box-top">
 
@@ -283,7 +260,6 @@ export default function Post(){
                     className='banner-get'
                 />
             </div>        
-            
         </PostDiv>
     )
 }

@@ -1,0 +1,24 @@
+.link {
+   
+    width: 32%;
+    min-width: 245px;
+    height: 193px;
+    margin-left: 7px;
+    padding: 0 22.5px 15px 22.5px;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 1%;
+    line-height: 1.2rem;
+    color: black;
+}
+.link:hover {
+    background-color: #0C3900;
+        color: white;
+        border-radius: 5px;
+}
+.link:hover span {
+    color: white;
+}
+.link:hover  a {
+    color: white;
+}

@@ -5,17 +5,8 @@ const white = '#fff'
 
 export const CardDiv = styled.div`
 
-    width: 32%;
-    min-width: 245px;
-    height: 193px;
-    margin-left: 7px;
-    padding: 0 22.5px 15px 22.5px;
-    text-align: left;
-    cursor: pointer;
-    margin-bottom: 1%;
-    line-height: 1.2rem;
-    color: black;
-
+    width: 100%;
+    height: 100%;
     a {
         color: #6225B5;
     }
@@ -34,18 +25,5 @@ export const CardDiv = styled.div`
         font-size: .8rem;
         color: ${silver};
     }
-
-    :hover {
-        background-color: ${darkGreen};
-        color: ${white};
-        border-radius: 5px;
-        span {
-            color: ${white};
-        }
-        a {
-            color: white;
-        }
-    }
-
 
 `

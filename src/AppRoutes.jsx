@@ -5,6 +5,7 @@ import AuthProvider, { AuthContext } from './contexts/auth'
 import Home from './pages/Home'
 import PostPage from './pages/Post'
 import Forum from './pages/forum/forum'
+import Postagem from './components/containers/Postagem'
 
 export default function AppRoutes() {
     const Private = ({children}) => {
@@ -28,8 +29,8 @@ export default function AppRoutes() {
         <AuthProvider>
             <Routes>
                 <Route  path='/' element={<Home/>}/>
-                <Route  path='/post/:idpost/:namepost' element={<PostPage/>}/>
                 <Route  path='/forum' element={<Forum/>}/>
+                <Route  path='/post/:id' element={<PostPage/>}/>
             </Routes>
         </AuthProvider>
       </BrowserRouter> 

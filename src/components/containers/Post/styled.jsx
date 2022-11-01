@@ -113,6 +113,9 @@ export const PostDiv = styled.div`
         border-top: 1px silver solid;
         border-bottom: 1px silver solid;
         margin: auto 0;
+        #fb-root {
+            height: 500px;
+        }
     }
 
     .title-comentarios {

@@ -12,15 +12,26 @@ import ParticiparComu from '../../components/containers/ParticiparComu'
 import Perguntas from '../../components/containers/Perguntas'
 import RestInfo from '../../components/containers/RestInfo'
 import SerieVoce from '../../components/containers/SerieVoce'
-import Post from '../../components/containers/Post'
+import PostContainer from '../../components/containers/Post'
+import Facebook from '../../components/Facebook'
 
 
-
+import { useContext, useEffect } from 'react'
+import { AuthContext } from '../../contexts/auth'
+import {useParams} from 'react-router-dom'
 export default function PostPage() {
+
+    const {postData, findAdmPost} = useContext(AuthContext)
+    const {id} = useParams()
+
+    useEffect(()=>{
+        findAdmPost(id)
+    },[])
+
     return(
         <>
             <Header/>
-            <Post/>
+            {postData? <PostContainer data={postData}/> : null}
             <Participar/>
             <MuralComunidade/>
             <ParticiparComu/>

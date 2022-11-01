@@ -3,6 +3,7 @@ import {Api} from '../api'
 import ModalError from '../components/modalError';
 import ModalSucess from '../components/modalSucess';
 import { useNavigate } from 'react-router-dom'
+import { ApiPrivate } from '../api';
 export const AuthContext = createContext()
 
 export default function AuthProvider({ children }){
@@ -11,6 +12,8 @@ export default function AuthProvider({ children }){
     const [ EntrarG, setEntrarG ] = useState(false)
     const [ allPosts, setAllPosts ] = useState('')
     const [ limit, setLimit] = useState(3)
+    const [ postData, setPostData] = useState('')
+
     const navigate = useNavigate()
     useEffect(()=>{
         async function loadUsuario(){
@@ -130,6 +133,21 @@ export default function AuthProvider({ children }){
         .catch(reponse=> ModalError('não foi possivel desativar'))
     }
 
+    async function findAdmPost(id) {
+        try {
+            await ApiPrivate.get(`/posts/${id}`)
+            .then(response=> {
+                setPostData(response.data)
+            })
+            .catch(error => {
+                throw new Error(error)
+            })
+        } catch (error) {
+            return ModalError(error)
+        }
+    }
+
+
     return(
         <AuthContext.Provider
             value={{ 
@@ -146,7 +164,9 @@ export default function AuthProvider({ children }){
                 allPosts,
                 reloadPosts,
                 setLimit,
-                limit
+                limit,
+                postData,
+                findAdmPost
             }}>
             {children}
         </AuthContext.Provider>

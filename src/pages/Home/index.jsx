@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 //containers da pagina 
 import Header from '../../components/containers/Header'
 import BannerDiv from '../../components/containers/Banner'
@@ -28,18 +28,14 @@ import { AuthContext } from '../../contexts/auth'
 import { useContext } from 'react'
 import ShareS from '../../components/SessionShare'
 import NotificationButtom from '../../components/NotificationButtom'
+import Facebook from '../../components/Facebook'
+import CommentsExample from '../../components/ComentFb'
 
 export default function Home(){
-
-  const { Login, EntrarG, setEntrarG } = useContext(AuthContext)
-
-  const [plataform, setPlataform] = useState('whatsapp')
-
-
   const [cadastrar, setCadastrar] = useState(false)
   const [formCadastro, setFormCadastro] = useState({})
 
-
+  
   return (
       <>
         <Header />
@@ -74,7 +70,6 @@ export default function Home(){
         <RestInfo/>
         <Footer/>
         <NewSletterDiv/>
-        
         <ShareS/>
         <NotificationButtom/>
     </>

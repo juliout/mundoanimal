@@ -10,7 +10,7 @@ import ModalError from '../../modalError'
 
 export default function Ultimas() {
 
-  const {typeClick, setEntrarG} = useContext(AuthContext)
+  const {typeClick} = useContext(AuthContext)
 
   const [dados, setDados] = useState('')
   const [baseDados, setBaseDados] = useState('')
@@ -22,7 +22,6 @@ export default function Ultimas() {
       setDados(baseDados.slice(0, contador))
     }else {
       typeClick('whatsapp')
-      setEntrarG(true)
     } 
   }
   
@@ -44,7 +43,6 @@ export default function Ultimas() {
     data()
     function setarrays(array){
       const x = Divisor(array, 9)
-      console.log(x)
       setDados(x.slice(0, contador)) 
       setBaseDados(x)
       setContador(contador+1)
