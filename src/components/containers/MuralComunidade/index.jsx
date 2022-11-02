@@ -13,25 +13,18 @@ import { ToastContainer } from 'react-toastify'
 
 export default function MuralComunidade({className}) {
     
-    const {allPosts, reloadPosts, limit, setLimit } = useContext(AuthContext)
+    const {allPosts, reloadPosts, limit, setLimit, setLogar } = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
     const [ usuario, setUsuario]= useState(false)
 
-    useEffect(()=>{
-      
-      if (limit >= 6) {
-        if(!usuario) return ModalError('faça o login')
-        navigate('/forum')
-      }
-    },[limit])
 
     async function SendPostMural(e) {
       e.preventDefault()
       if(!usuario){
-        return ModalError('Por favor Faça seu login')
+        return setLogar(true)
       }
       try {
         await Api.post('/createpost', {
@@ -55,7 +48,11 @@ export default function MuralComunidade({className}) {
     }
 
     function morePosts() {
-      if(!usuario) return ModalError('faça seu login')
+      if(!usuario) return setLogar(true)
+
+      if (limit >= 6) {
+        navigate('/forum')
+      }
       reloadPosts(limit+1)
       setLimit(limit+1)
     }

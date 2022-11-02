@@ -5,5 +5,5 @@ export const Api = axios.create({
 })
 
 export const ApiPrivate = axios.create({
-  baseURL: 'https://agregador.bigdates.com.br:3010'
+  baseURL: process.env.REACT_APP_BIGDATE_URL
 })

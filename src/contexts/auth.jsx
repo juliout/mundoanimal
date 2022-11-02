@@ -13,6 +13,8 @@ export default function AuthProvider({ children }){
     const [ allPosts, setAllPosts ] = useState('')
     const [ limit, setLimit] = useState(3)
     const [ postData, setPostData] = useState('')
+    const [ cadastrar, setCadastrar] = useState(false)
+    const [ logar, setLogar] = useState(false)
 
     const navigate = useNavigate()
     useEffect(()=>{
@@ -28,7 +30,7 @@ export default function AuthProvider({ children }){
             })
             .then(async response => {
                 setUsuario(usuarioStorage)
-                return navigate('/user/painel')                        
+                return navigate('/')                        
             })
             .catch(async response=> {
                 await ModalError('Logue novamenete')
@@ -41,7 +43,7 @@ export default function AuthProvider({ children }){
     },[])
 
     useEffect(()=> {
-        async function findAllPost(){
+        async function findAllPostMural(){
             try {
                 await Api.post('/allposts', {limit: limit}).then(response=> {
                     setAllPosts(response.data)
@@ -50,8 +52,9 @@ export default function AuthProvider({ children }){
                 ModalError(error.data.message)
             }
         }
-        findAllPost() 
+        findAllPostMural() 
     },[])
+
     async function reloadPosts (limit) {
         try {
             if(limit) {
@@ -83,7 +86,7 @@ export default function AuthProvider({ children }){
             localStorage.setItem('userToken',JSON.stringify(response.data.user))
             await ModalSucess(response.data.message)
             setUsuario(response.data.user)
-            return navigate('/user/painel')
+            return navigate('/')
         }
     }
     function Sair(){
@@ -147,6 +150,38 @@ export default function AuthProvider({ children }){
         }
     }
 
+    const SingUp = async (user) => {
+        console.log(user)
+        await Api.post('/createuser', user)
+        .then(async response=> {
+            await ModalSucess('Cadastrado')
+        })
+        .catch(async response=> {
+            console.log(response)
+            return await ModalError(response)
+        })
+        let login = {
+            email: user.email,
+            password: user.password,
+            rede: 'mundo-animal'
+        }
+        const resposta = await Api.post('/login', login).catch(async error=> {
+            if(!error.response.data){
+                return await ModalError('Error ao logar, tente mais tarde')
+            }
+            return await ModalError(error.response.data.message)
+        })
+        if(resposta) {
+            await localStorage.setItem('userToken',JSON.stringify(resposta.data.user))
+            await ModalSucess('sendo redirecionado')
+            return setTimeout(() => {
+               window.location.reload() 
+            }, 2000);
+        }
+    
+    }   
+
+
 
     return(
         <AuthContext.Provider
@@ -166,7 +201,12 @@ export default function AuthProvider({ children }){
                 setLimit,
                 limit,
                 postData,
-                findAdmPost
+                findAdmPost,
+                cadastrar,
+                setCadastrar,
+                SingUp,
+                logar,
+                setLogar
             }}>
             {children}
         </AuthContext.Provider>

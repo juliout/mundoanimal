@@ -11,6 +11,8 @@ import {RiArrowDownSFill} from 'react-icons/ri'
 import {AiFillHeart, AiOutlineHeart, AiFillWechat} from 'react-icons/ai'
 import { useEffect, useState } from "react"
 import ModalError from "../../../modalError"
+import { useContext } from 'react'
+import { AuthContext } from "../../../../contexts/auth"
 
 
 export default function CaixaPostagem ({data, index}) {
@@ -18,6 +20,7 @@ export default function CaixaPostagem ({data, index}) {
     const dataAtual = new Date();
     const anoAtual = dataAtual.getFullYear();
     const [comentarioCurtido, setComentarioCurtido] = useState(false)
+    const {setLogar} = useContext(AuthContext)
 
     const [value , setValue] = useState(data)
     const [comentario, setComentario] = useState('')
@@ -35,7 +38,6 @@ export default function CaixaPostagem ({data, index}) {
       curtiu()
      
     },[data])
-
 
     const Verificado = () => {
         return (
@@ -75,7 +77,7 @@ export default function CaixaPostagem ({data, index}) {
       }
       
       async function curtida(post_id){
-        if(!usuario) return ModalError('por favor faça o login')
+        if(!usuario) return setLogar(true)
         const response = await Api.post('/curtidapost',{
           post_id : post_id,
           user_id : usuario
@@ -91,7 +93,7 @@ export default function CaixaPostagem ({data, index}) {
 
       async function createComentario(e){
         if(e.code === 'Enter'){
-          if(!usuario) return ModalError('faça o login')
+          if(!usuario) return setLogar(true)
           await Api.post('/createcomentario', {
             text : e.target.value,
             user_id : usuario,

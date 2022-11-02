@@ -1,86 +1,47 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import {ModalDiv} from './modalStyled'
-import InputName from '../../../components/inputName'
-
+import InputName from '../../inputName'
+import { AuthContext } from '../../../contexts/auth';
 
 import 'react-toastify/dist/ReactToastify.css';
-import ModalError from '../../../components/modalError'
-import ModalSucess from '../../../components/modalSucess'
-import Email from '../../../components/emailAutocompletee';
-
-import { Api } from '../../../api'
+import Email from '../../emailAutocompletee';
 
 export default function MCadastro({setCadastrar, form}) {
-    const [emailC ,setEmailC]  = useState(lete())
+    const {SingUp} = useContext(AuthContext)
 
-    function lete () {
-        if(form.social === 'e-mail'){
-            return form.socialContact
+    async function sendCadastro(e) {
+        e.preventDefault()
+        console.log(e)
+        const {name, genero, nascimento, email, password} = e.target
+
+        const user = {
+            name: name.value,
+            email: email.value,
+            datanascimento: nascimento.value,
+            genero: genero.value,
+            password: password.value,
+            rede: 'mundo-animal',
+            userAgent: window.location.userAgent,
+            plataform : window.location.plataform,
+            social: 'e-mail',
+            socialContact: email.value
         }
-        else return null
+        SingUp(user)
     }
     
     const closebox = (e) => {
         e.preventDefault()
         setCadastrar(false)        
     }
-    const sendCadastro = async (e) => {
-        e.preventDefault()
-        let {name, nascimento, email, password,genero} = e.target
-
-        let user = {
-            name: name.value,
-            datanascimento: nascimento.value,
-            email: email.value,
-            password: password.value,
-            genero: genero.value,
-            social: form.social,
-            socialContact : form.socialContact,
-            loteria : form.loteria,
-            rede: 'alerta-da-sorte',
-            userAgent: navigator.userAgent,
-            plataform: navigator.platform
-        }
-        
-        await Api.post('/createuser', user)
-        .then(async response=> {
-            await ModalSucess('Cadastrado')
-        })
-        .catch(async response=> {
-            return await ModalError(response.response.data.message)
-        })
-        let login = {
-            email: user.email,
-            password: user.password,
-            rede: 'alerta-da-sorte'
-        }
-        const resposta = await Api.post('/login', login).catch(async error=> {
-            if(!error.response.data){
-                return await ModalError('Error ao logar, tente mais tarde')
-            }
-            return await ModalError(error.response.data.message)
-        })
-        if(resposta) {
-            await localStorage.setItem('userToken',JSON.stringify(resposta.data.user))
-            await ModalSucess('sendo redirecionado')
-            return setTimeout(() => {
-               window.location.reload() 
-            }, 2000);
-        }
-    
-    }   
-
     return (
         <ModalDiv>
             <div className="modalMain">
                 <button className='btnClose' onClick={closebox}> X </button>
-                <form id='formSendCadastro' onSubmit={sendCadastro}>
+                <form id='formSendCadastro' onSubmit={(e)=> sendCadastro(e)}>
                     <h2 className='formTitle'>
-                        Complete seu cadastro e escolha uma senha para que você possa
-                        editar ou cancelar seus alertas aqui pelo site.
+                        Faça Seu cadastro e Tenha permissão a postar no mural da comunidade.
                     </h2>
-                    <div className='divForm'>
-                        
+                    <div className='divForm'>                        
                         <div className='stwo'>
                             <div className='input fullname'>
                                 <label htmlFor="name">Nome Completo:</label>
@@ -102,7 +63,7 @@ export default function MCadastro({setCadastrar, form}) {
                         <div className="sone">
                             <div className='input '>
                                 <label htmlFor="email">E-mail</label>
-                                <Email name='email' id='email' required value={emailC} onChange={(e)=>{setEmailC(e.target.value)}} autoComplete='off' />
+                                <Email name='email' id='email' required autoComplete='off' />
                             </div>
                             <div className='input'>
                                 <label htmlFor="name">Senha</label>

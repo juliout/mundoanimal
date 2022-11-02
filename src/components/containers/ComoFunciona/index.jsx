@@ -1,7 +1,13 @@
 import {ComoFuncionaDiv} from './styled'
 import FuncionaCard from '../../FuncionaCards'
+import { useContext } from 'react'
+import {AuthContext} from '../../../contexts/auth'
+
 
 export default function ComoFunciona() {
+
+    const {setCadastrar} = useContext(AuthContext)
+
     return (
         <ComoFuncionaDiv>
         <div className="funcionaMain">
@@ -16,24 +22,28 @@ export default function ComoFunciona() {
                 number={1} 
                 text={'Cadastre seu nome e email, escolha um avatar e o seu apelido na comunidade'}
                 flip='right'
+                onClick={()=>setCadastrar(true)}
               />
               <FuncionaCard
                 img={'/image/step2.jpg'} 
                 number={2} 
                 text={'Escreva seu post no mural, indicando ao menos uma fonte onde possamos checar a informação;'}
                 flip='left'
+                onClick={()=>setCadastrar(true)}
               />
               <FuncionaCard
                 img={'/image/step3.jpg'} 
                 number={3} 
                 text={'Seu post será publicado no mural com o status de "não verificado". Após nossa equipe de editores conferir se as informações são verdadeiras, o status do post será alterado;'}
                 flip='down'
+                onClick={()=>setCadastrar(true)}
               />
               <FuncionaCard 
                 img={'/image/step4.jpg'} 
                 number={4} 
                 text={'Os melhores posts do mural serão enviados para a comunidade, através dos grupos de whats e telegram e demais redes sociais.'}
                 flip='left'
+                onClick={()=>setCadastrar(true)}
               />
           </div>
         </div>        

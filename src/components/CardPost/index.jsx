@@ -13,7 +13,7 @@ export default function CardPost({data}){
     } = data
 
     return (
-        <Link to={`/poste/${post_id}`} className='link'>
+        <Link to={`/post/${post_id}`} className='link'>
             <CardDiv  data-aos='zoom-in'>                
                     <p>{`${post_data_time} - ${formatted_date}`}</p>
                     <h2>{post_titulo}</h2>

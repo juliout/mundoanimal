@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useContext} from 'react'
 //containers da pagina 
 import Header from '../../components/containers/Header'
 import BannerDiv from '../../components/containers/Banner'
@@ -18,28 +18,24 @@ import RestInfo from '../../components/containers/RestInfo'
 import Footer from '../../components/containers/Footer'
 import NewSletterDiv from '../../components/containers/NewSletter'
 //modais e alerts
-import Descadastrar from '../../components/modais/Descadastrar'
-import MCadastro from './ModalCadastro/index'
+import MCadastro from '../../components/modais/ModalCadastro/index'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //copntext
 import { AuthContext } from '../../contexts/auth'
-import { useContext } from 'react'
 import ShareS from '../../components/SessionShare'
 import NotificationButtom from '../../components/NotificationButtom'
-import Facebook from '../../components/Facebook'
-import CommentsExample from '../../components/ComentFb'
+import MLogin from '../../components/modais/ModalLogin'
+
 
 export default function Home(){
-  const [cadastrar, setCadastrar] = useState(false)
-  const [formCadastro, setFormCadastro] = useState({})
-
-  
+  const {cadastrar, setCadastrar, logar, setLogar} = useContext(AuthContext)
   return (
       <>
         <Header />
-          {cadastrar === true ? <MCadastro setCadastrar={setCadastrar} form={formCadastro}/> : null}
+          {logar ? <MLogin/>:null}
+          {cadastrar ? <MCadastro setCadastrar={setCadastrar}/> : null}
           {/* container do alerta*/}
           <ToastContainer
             position="top-center"

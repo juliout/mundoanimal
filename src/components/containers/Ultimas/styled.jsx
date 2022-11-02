@@ -48,9 +48,9 @@ export const  UltimasDiv = styled.div`
     
     .banner-get {
         margin-top: 20px;
-            width: 100%;
-            min-height: 50px;
-            background-color: red;
+        width: 100%;
+        min-height: 50px;
+
     }
     .containerPosts {
         margin-bottom: 10px;
