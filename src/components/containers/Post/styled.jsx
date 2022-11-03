@@ -253,7 +253,7 @@ export const PostDiv = styled.div`
             
         }
         .btn-default {
-            margin: 0px 0;
+            margin: 0px auto;
         }
         .post {
             width: 100%;
