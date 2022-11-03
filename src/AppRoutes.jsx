@@ -5,7 +5,6 @@ import AuthProvider, { AuthContext } from './contexts/auth'
 import Home from './pages/Home'
 import PostPage from './pages/Post'
 import Forum from './pages/forum/forum'
-import Postagem from './components/containers/Postagem'
 
 export default function AppRoutes() {
     const Private = ({children}) => {

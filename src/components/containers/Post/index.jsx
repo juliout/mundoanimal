@@ -113,7 +113,6 @@ export default function PostContainer({data}){
                                     <p>TAG 8</p>                            
                                     <p>TAG 9</p>
                             </div>                       
-                                    {/* <Facebook/> */}
                                     <CommentsExample/>
                             <div className="mais-voce-sabia">
                                 <h1>
