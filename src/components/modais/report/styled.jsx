@@ -28,7 +28,7 @@ export const RepoDiv = styled.div`
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        color: ${p=>p.bgc || 'black'};
+        color: black;
         background-color: white;
         transform: scale(1.5);
         cursor: pointer;
@@ -47,21 +47,23 @@ export const RepoDiv = styled.div`
         align-items: center;
 
         h2 {
-            color: white;
+            color: #F07F0F;
             margin-bottom: 10px;
         }
         p {
             width: 80%;
             text-align: center;
             font-size: 0.85rem;
-            color: white;
+            color: black;
             margin-bottom: 25px;
         }
         
-        input {                
-                height: 35px;
-                border-radius: 7px;
-                padding-left: 10px
+        input { 
+            width: 98%;
+            height: 35px;
+            border-radius: 7px;
+            padding-left: 10px;
+            box-shadow: inset 2px 4px 0px #00000052;
         }
         .nameEmail{
             width: 90%;
@@ -80,6 +82,7 @@ export const RepoDiv = styled.div`
             resize: none;
             padding: 10px;
             font-weight: 700;
+            box-shadow: inset 2px 4px 0px #00000052;
         }
         .btnEnviar {
             width: 50%;
@@ -90,13 +93,13 @@ export const RepoDiv = styled.div`
             border: 1px solid white;
 
             background-color: ${p=>p.bgc || 'black'};
-            color: white;
+            color: black;
             font-size: 1rem;
             font-weight: 700;
+            background-color: #F07F0F;
 
             :hover {
-                background-color: white;
-                color: #095e57;
+                color: white;
             }
         }
     }

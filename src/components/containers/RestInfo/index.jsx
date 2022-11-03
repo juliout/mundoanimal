@@ -28,11 +28,11 @@ export default function RestInfo() {
 
           {modalDescadastrar ? <Descadastrar 
            modalClose={setModalDescadastrar}
-           colorBg={'#0C3900'}
+           colorBg={'#f7f7f7'}
           /> : null}
           {modalReportar ? <ReportError 
             modalClose={setModalReportar}
-            colorBg={'#0C3900'}
+            colorBg={'#f7f7f7'}
           /> : null}
 
 

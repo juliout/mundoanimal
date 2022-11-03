@@ -97,4 +97,23 @@ export const ModalDiv = styled.div`
             }
         }
     }
+    @media (max-width: 426px) {
+        .modalMain {
+            .form-login {
+            div {
+                width: 100%;
+                flex-direction: column;
+                input {
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .nao-cadastrado{
+            h2 {
+            font-size: .9rem;
+            }
+        }
+        }
+    }
 `

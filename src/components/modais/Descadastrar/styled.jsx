@@ -15,7 +15,6 @@ export const ModalMain = styled.div`
 
 export const DesDiv = styled.div`
     background-color: ${p=>p.bgc || 'black'};
-
     width: 30%;
     min-width: 430px;
     min-height: 300px;
@@ -30,14 +29,13 @@ export const DesDiv = styled.div`
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        color: ${p=>p.bgc || 'black'};
+        color: black;
         background-color: white;
         transform: scale(1.5);
         cursor: pointer;
-        
+        filter: drop-shadow(2px 2px 2px #02020239);
         :hover {
             transform: scale(1.55);
-            filter: drop-shadow(2px 2px 2px #02020239);
         }
     }
 
@@ -49,25 +47,25 @@ export const DesDiv = styled.div`
         align-items: center;
 
         h2 {
-            color: white;
+            color: #F07F0F;
             margin-bottom: 10px;
         }
         p {
             width: 80%;
             text-align: center;
             font-size: 0.9rem;
-            color: white;
+            color: black;
             margin-bottom: 10px;
         }
 
         .firstDiv {
 
-            width: 100%;
+            width: 95%;
             display: flex;
             flex-direction: column;
 
             label {
-                color: white;
+                color: black;
                 margin-bottom: 5px;
             }
             
@@ -75,11 +73,13 @@ export const DesDiv = styled.div`
                 height: 35px;
                 border-radius: 7px;
                 width: 100%;
+                box-shadow: inset 2px 4px 0px #00000052;
             }
             
             input[type=date] {
                 width: 70%;
                 padding-left: 10px;
+                box-shadow: inset 2px 4px 0px #00000052;
             }
             .top {
                 display: flex;
@@ -102,8 +102,7 @@ export const DesDiv = styled.div`
                 .divinput {
                     display: flex;
                     flex-direction: column;
-                    width: 47%;
-                    
+                    width: 47%;    
                 }
                 
             }
@@ -119,15 +118,15 @@ export const DesDiv = styled.div`
             border: 1px solid white;
 
             background-color: ${p=>p.bgc || 'black'};
-            color: white;
+            color: black;
             font-size: 1rem;
             font-weight: 700;
-
+            background-color: #F07F0F;
             cursor: pointer;
 
             :hover {
-                background-color: white;
-                color: #095e57;
+                color: wheat;
+
             }
         }
     }

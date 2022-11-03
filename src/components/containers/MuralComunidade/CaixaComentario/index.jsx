@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect, useState, useContext } from 'react'
+import { AuthContext } from '../../../../contexts/auth'
 import { Api } from '../../../../api'
 
 import {HiUserCircle} from 'react-icons/hi'
@@ -9,10 +9,10 @@ import {ComentarioDiv} from './styled'
 import ModalError from '../../../modalError'
 
 export default function CaixaComentario({data}) {
-  const usuario = false
+  
   const [curtirTxt, setCurtirTxt] = useState(false)
   const [value, setValue] = useState(data)
-
+  const {usuario, setLogar} = useContext(AuthContext)
   
   useEffect(()=> {
     if(!usuario){
@@ -21,7 +21,7 @@ export default function CaixaComentario({data}) {
     const {comentarioCurtidas} = data
     function curtiu () {
       comentarioCurtidas.forEach(element => {
-        if(element.user_id === usuario) {
+        if(element.user_id === usuario.id) {
           setCurtirTxt(true)
         } 
       })
@@ -40,11 +40,17 @@ export default function CaixaComentario({data}) {
 
   async function curtida(comentario_id) {
     if(!usuario) {
-      return ModalError('por favor faça o login')
+      return setLogar(true)
+    }
+    const token = {
+      'x-acess-token' : usuario.token,
+      'Content-Type': 'application/json',
     }
     const response = await Api.post('/curtidacomentario', {
-      user_id: usuario,
+      user_id: usuario.id,
       comentario_id: comentario_id
+    }, {
+      headers: token
     })
     if(response.data.message === 'curtido') {
       await realodComentario(comentario_id)

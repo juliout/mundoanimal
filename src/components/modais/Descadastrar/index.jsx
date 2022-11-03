@@ -8,7 +8,7 @@ export default function Descadastrar({modalClose, colorBg}) {
         <ModalMain>
             <DesDiv bgc={colorBg}>
                 <button className='btnClose' onClick={()=>modalClose(false)}>X</button>
-                <form action="" method="post" id="descadastrar">
+                <form  method="post" id="descadastrar">
                     <h2>Descadastrar</h2>
                     <p>Para se descadastrar do site e cancelar o envio de receitas e promoções, preencha os campos abaixo:</p>
                     <div className='firstDiv'>

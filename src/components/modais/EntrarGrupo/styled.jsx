@@ -136,6 +136,13 @@ export const EntrarDiv = styled.div`
         }
 
     }
+
+
+    @media (max-width: 600px) {
+        .emain {
+            width: 80%;
+        }
+    }
 `
 
 export const MegaDiv = styled.div`

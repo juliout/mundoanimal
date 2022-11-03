@@ -13,18 +13,20 @@ import { ToastContainer } from 'react-toastify'
 
 export default function MuralComunidade({className}) {
     
-    const {allPosts, reloadPosts, limit, setLimit, setLogar } = useContext(AuthContext)
+    const {allPosts, reloadPosts, limit, setLimit, setLogar, usuario} = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [link, setLink] = useState('')
     const navigate = useNavigate()
-    const [ usuario, setUsuario]= useState(false)
-
 
     async function SendPostMural(e) {
       e.preventDefault()
       if(!usuario){
         return setLogar(true)
+      }
+      const token = {
+        'x-acess-token' : usuario.token,
+        'Content-Type': 'application/json',
       }
       try {
         await Api.post('/createpost', {
@@ -32,8 +34,11 @@ export default function MuralComunidade({className}) {
           text: text,
           link: link,
           type: 'mundo-animal',
-          user_id: usuario
-        }).then(response =>{
+          user_id: usuario.id
+        },{
+          headers: token
+        })
+        .then(response =>{
           ModalSucess('Publicado no mural')
           reloadPosts(3)
           setTitle('')
@@ -43,15 +48,17 @@ export default function MuralComunidade({className}) {
           throw new Error(e.message)
         })
       } catch (error) {
-        ModalError(error.data.message)
+        ModalError(error.message)
       }
     }
 
     function morePosts() {
       if(!usuario) return setLogar(true)
-
-      if (limit >= 6) {
-        navigate('/forum')
+      console.log(window.location.pathname)
+      if (window.location.pathname !== '/forum') {
+        if (limit >= 6) {
+          navigate('/forum')
+        }
       }
       reloadPosts(limit+1)
       setLimit(limit+1)

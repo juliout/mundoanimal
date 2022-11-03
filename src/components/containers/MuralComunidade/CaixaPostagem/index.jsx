@@ -16,11 +16,10 @@ import { AuthContext } from "../../../../contexts/auth"
 
 
 export default function CaixaPostagem ({data, index}) {
-    const usuario = false
     const dataAtual = new Date();
     const anoAtual = dataAtual.getFullYear();
     const [comentarioCurtido, setComentarioCurtido] = useState(false)
-    const {setLogar} = useContext(AuthContext)
+    const {setLogar, usuario} = useContext(AuthContext)
 
     const [value , setValue] = useState(data)
     const [comentario, setComentario] = useState('')
@@ -30,7 +29,7 @@ export default function CaixaPostagem ({data, index}) {
       
       function curtiu () {
         postCurtidas.forEach(element => {
-          if(element.user_id === usuario) {
+          if(element.user_id === usuario.id) {
             setComentarioCurtido(true)
           }
         });
@@ -78,9 +77,15 @@ export default function CaixaPostagem ({data, index}) {
       
       async function curtida(post_id){
         if(!usuario) return setLogar(true)
+        const token = {
+          'x-acess-token' : usuario.token,
+          'Content-Type': 'application/json',
+      }
         const response = await Api.post('/curtidapost',{
           post_id : post_id,
-          user_id : usuario
+          user_id : usuario.id
+        },{
+          headers: token
         })
         if (response.data.message === 'curtido') {
           await reloadPost(post_id)
@@ -94,11 +99,18 @@ export default function CaixaPostagem ({data, index}) {
       async function createComentario(e){
         if(e.code === 'Enter'){
           if(!usuario) return setLogar(true)
+          const token = {
+            'x-acess-token' : usuario.token,
+            'Content-Type': 'application/json',
+          }
           await Api.post('/createcomentario', {
             text : e.target.value,
-            user_id : usuario,
+            user_id : usuario.id,
             post_id : value.id
-          }).then(async response => {
+          },{
+            headers: token
+          })
+          .then(async response => {
             await reloadPost(value.id)
             return setComentario('')
           }  

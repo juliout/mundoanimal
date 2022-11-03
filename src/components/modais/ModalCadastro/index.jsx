@@ -42,32 +42,34 @@ export default function MCadastro({setCadastrar, form}) {
                         Faça Seu cadastro e Tenha permissão a postar no mural da comunidade.
                     </h2>
                     <div className='divForm'>                        
-                        <div className='stwo'>
-                            <div className='input fullname'>
-                                <label htmlFor="name">Nome Completo:</label>
-                                <InputName type="text" name='name' id='name' required/>
+                        <div className='divfor-all'>
+                            <div className='stwo'>
+                                    <div className='input fullname'>
+                                        <label htmlFor="name">Nome Completo:</label>
+                                        <InputName type="text" name='name' id='name' required/>
+                                    </div>
+                                    <div className="select">
+                                        <label htmlFor="genero">genero</label>
+                                        <select name="genero" id="genero" className='.input'>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Feminino">Feminino</option>
+                                        </select>
+                                    </div>
+                                    <div className='input'>
+                                        <label htmlFor="nascimento">Data Nasci.:</label>
+                                        <input type='date' name='nascimento' id='nascimento' required/>
+                                    </div>
+                                    
                             </div>
-                            <div className="select">
-                                <label htmlFor="">genero</label>
-                                <select name="genero" id="genero" className='.input'>
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Feminino">Feminino</option>
-                                </select>
-                            </div>
-                            <div className='input'>
-                                <label htmlFor="nascimento">Data Nasci.:</label>
-                                <input type='date' name='nascimento' id='nascimento' required/>
-                            </div>
-                            
-                        </div>
-                        <div className="sone">
-                            <div className='input '>
-                                <label htmlFor="email">E-mail</label>
-                                <Email name='email' id='email' required autoComplete='off' />
-                            </div>
-                            <div className='input'>
-                                <label htmlFor="name">Senha</label>
-                                <input type="password" name='password' id='password' required/>
+                            <div className="sone">
+                                    <div className='input '>
+                                        <label htmlFor="email">E-mail</label>
+                                        <Email name='email' id='email' required autoComplete='off' />
+                                    </div>
+                                    <div className='input'>
+                                        <label htmlFor="name">Senha</label>
+                                        <input type="password" name='password' id='password' required/>
+                                    </div>
                             </div>
                         </div>
                        
