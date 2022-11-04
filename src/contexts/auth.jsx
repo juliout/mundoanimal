@@ -53,7 +53,7 @@ export default function AuthProvider({ children }){
                     setAllPosts(response.data)
                 })
             } catch (error) {
-                ModalError(error.data.message)
+                ModalError(error.message)
             }
         }
         findAllPostMural() 
@@ -145,6 +145,7 @@ export default function AuthProvider({ children }){
             await ApiPrivate.get(`/posts/${id}`)
             .then(response=> {
                 setPostData(response.data)
+                console.log(response.data)
             })
             .catch(error => {
                 throw new Error(error)
