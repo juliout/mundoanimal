@@ -7,7 +7,7 @@ import { ApiPrivate } from '../api';
 export const AuthContext = createContext()
 
 export default function AuthProvider({ children }){
-    const [ usuario, setUsuario ] = useState(null);
+    const [ usuario, setUsuario ] = useState('');
     const [ typeG, setTypeG ] = useState('')
     const [ EntrarG, setEntrarG ] = useState(false)
     const [ allPosts, setAllPosts ] = useState('')
@@ -29,13 +29,17 @@ export default function AuthProvider({ children }){
                 token: usuarioStorage.token
             })
             .then(async response => {
+                console.log(response)
                 setUsuario(usuarioStorage)
                 return navigate('/')                        
             })
             .catch(async response=> {
+                console.log(response)
                 await ModalError('Logue novamenete')
                 localStorage.removeItem('userToken')
             })
+        }else {
+            return localStorage.removeItem('userToken')
         }
         
     }
@@ -151,7 +155,6 @@ export default function AuthProvider({ children }){
     }
 
     const SingUp = async (user) => {
-        console.log(user)
         await Api.post('/createuser', user)
         .then(async response=> {
             await ModalSucess('Cadastrado')

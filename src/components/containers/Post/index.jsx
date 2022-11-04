@@ -6,7 +6,6 @@ import Facebook from '../../Facebook'
 import CommentsExample from '../../ComentFb'
 
 export default function PostContainer({data}){
-    console.log(data)
 
     let {
         post_web_tag_title,

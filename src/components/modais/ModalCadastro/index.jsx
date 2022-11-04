@@ -11,7 +11,6 @@ export default function MCadastro({setCadastrar, form}) {
 
     async function sendCadastro(e) {
         e.preventDefault()
-        console.log(e)
         const {name, genero, nascimento, email, password} = e.target
 
         const user = {

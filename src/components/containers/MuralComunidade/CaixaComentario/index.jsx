@@ -78,7 +78,7 @@ export default function CaixaComentario({data}) {
           </button>
           <button  
             className={`div-comentario-cutir ${curtirTxt? 'curtido' : ''}`}
-            onClick={()=> {curtida(value.id, usuario)}}
+            onClick={()=> {curtida(value.id)}}
           >
             <IoMdThumbsUp className='comentario-joinha'/>
             {value.comentarioCurtidas.length}

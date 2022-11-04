@@ -19,7 +19,6 @@ export default function CardPost({data}){
         x = x.replace(er, '')
         x = x.replace(/ /g, '-')
         x = x.toLowerCase()
-        console.log(x)
         return x
     }
 
