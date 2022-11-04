@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 
 export const BtnDiv = styled.div`
-
+  width: 100%;
   box-sizing: border-box;
-
 div {
   
   text-decoration: none;

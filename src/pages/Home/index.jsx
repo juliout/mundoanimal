@@ -65,7 +65,6 @@ export default function Home(){
         <SerieVoce/>
         <RestInfo/>
         <Footer/>
-        <NewSletterDiv/>
         <ShareS/>
         <NotificationButtom/>
     </>

@@ -16,7 +16,7 @@ export const SerieVoceDiv = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        
         h1 {
             font-weight: 600;
             font-size: 1.3rem;
@@ -46,17 +46,17 @@ export const SerieVoceDiv = styled.div`
  
     }
     .link {
+        width: 15%;
+        min-width: 106px;
+        height: 40px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-
-        width: 15.5%;
-        min-width: 105px;
-        height: 40px;
-
         border-bottom: 2px solid white;
         margin-bottom: 10px;
-        margin-right: 10px;
+        .flip-animate  {
+            text-align: left;
+        }
+        padding: 0;
         a {
             font-size: .8rem;
         }

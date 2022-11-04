@@ -10,90 +10,82 @@ export default function SerieVoce() {
           <h3>+ Saíba Mais</h3>
           <h3>Conheça nossas outras ferramentas:</h3>
           <div className="links">
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
-            <div className="link">
-              <BtnFlip 
-                text={'/copadomundo'} 
-                color={'white'} 
-                secondColor={'#6225B5'}
-              />
-            </div>
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+            <BtnFlip 
+              text={'/copadomundo'} 
+              color={'white'} 
+              secondColor={'#6225B5'}
+              className={'link'}
+            />
+
+            
+            
+            
             
           </div>
         </div>

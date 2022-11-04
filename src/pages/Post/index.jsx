@@ -13,7 +13,7 @@ import Perguntas from '../../components/containers/Perguntas'
 import RestInfo from '../../components/containers/RestInfo'
 import SerieVoce from '../../components/containers/SerieVoce'
 import PostContainer from '../../components/containers/Post'
-import Facebook from '../../components/Facebook'
+import { ToastContainer } from 'react-toastify'
 
 
 import { useContext, useEffect } from 'react'
@@ -30,7 +30,18 @@ export default function PostPage() {
 
     return(
         <>
-            <Header/>
+            <ToastContainer
+                position="top-center"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            
             {postData? <PostContainer data={postData}/> : null}
             <Participar/>
             <MuralComunidade/>
@@ -44,7 +55,6 @@ export default function PostPage() {
             <SerieVoce/>
             <RestInfo/>
             <Footer/>
-            <NewSletter/>
         </>
     )
 }
