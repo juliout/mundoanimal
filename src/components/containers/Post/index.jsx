@@ -62,7 +62,7 @@ export default function PostContainer({data}){
                                 <p>
                                     {post_web_texto}
                                     {
-                                        post_imagem ? <img src={`${ApiPrivate}/imgpost/${post_imagem}`} alt="" /> : ''
+                                        post_imagem ? <img src={`https://agregador.bigdates.com.br:3010/imgpost/${post_imagem}`} alt="" /> : ''
                                     }
                                 </p>
                             </div>
