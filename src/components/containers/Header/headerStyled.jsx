@@ -39,6 +39,7 @@ export const HeaderDiv = styled.header`
         height: 35px;
     }
     .hlogo {
+        cursor: pointer;
         position: absolute;
         width: 200px;
         height: 66px;
