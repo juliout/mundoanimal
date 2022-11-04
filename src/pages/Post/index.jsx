@@ -26,7 +26,6 @@ export default function PostPage() {
 
     useEffect(()=>{
         findAdmPost(id)
-        console.log(postData)
     },[])
 
     return(
