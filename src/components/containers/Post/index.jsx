@@ -2,8 +2,8 @@ import BtnVerMais from '../../BtnDefault/btnVermais'
 import {PostDiv} from './styled'
 import {useState, useEffect, useContext} from 'react'
 import { ToastContainer } from 'react-toastify'
-import Facebook from '../../Facebook'
 import CommentsExample from '../../ComentFb'
+import { ApiPrivate } from '../../../api'
 
 export default function PostContainer({data}){
 
@@ -62,7 +62,7 @@ export default function PostContainer({data}){
                                 <p>
                                     {post_web_texto}
                                     {
-                                        post_imagem ? <img src={`${process.env.REACT_APP_BIGDATE_URL}/imgpost/${post_imagem}`} alt="" /> : ''
+                                        post_imagem ? <img src={`${ApiPrivate}/imgpost/${post_imagem}`} alt="" /> : ''
                                     }
                                 </p>
                             </div>
