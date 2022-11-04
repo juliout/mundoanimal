@@ -24,8 +24,6 @@ export default function MuralComunidade({className}) {
       if(!usuario){
         return setLogar(true)
       }
-      console.log(usuario)
-      console.log('roda aq')
       const token = {
         'x-acess-token' : usuario.token,
         'Content-Type': 'application/json',

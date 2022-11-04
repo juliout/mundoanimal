@@ -6,7 +6,6 @@ export default function Facebook({id}) {
     useEffect(()=>{
         const w = window.FB;
         w.XFBML.parse();
-        console.log(window.location.href)
       },[])
 
     return (

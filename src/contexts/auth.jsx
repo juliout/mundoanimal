@@ -29,12 +29,9 @@ export default function AuthProvider({ children }){
                 token: usuarioStorage.token
             })
             .then(async response => {
-                console.log(response)
-                setUsuario(usuarioStorage)
-                return navigate('/')                        
+                setUsuario(usuarioStorage)                     
             })
             .catch(async response=> {
-                console.log(response)
                 await ModalError('Logue novamenete')
                 localStorage.removeItem('userToken')
             })
@@ -145,7 +142,6 @@ export default function AuthProvider({ children }){
             await ApiPrivate.get(`/posts/${id}`)
             .then(response=> {
                 setPostData(response.data)
-                console.log(response.data)
             })
             .catch(error => {
                 throw new Error(error)
@@ -161,7 +157,6 @@ export default function AuthProvider({ children }){
             await ModalSucess('Cadastrado')
         })
         .catch(async response=> {
-            console.log(response)
             return await ModalError(response)
         })
         let login = {
