@@ -7,6 +7,7 @@ export default function Forum() {
 
     return (
         <>
+            <Header/>
             <MuralComunidade className={'muralForum'}/>
         </>
     )

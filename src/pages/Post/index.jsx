@@ -41,7 +41,7 @@ export default function PostPage() {
                 draggable
                 pauseOnHover
             />
-            
+            <Header/>
             {postData? <PostContainer data={postData}/> : null}
             <Participar/>
             <MuralComunidade/>
