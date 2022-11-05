@@ -16,6 +16,7 @@ export default function AuthProvider({ children }){
 
 
     const navigate = useNavigate()
+
     useEffect(()=>{
         async function loadUsuario(){
 
@@ -31,9 +32,8 @@ export default function AuthProvider({ children }){
                 setUsuario(usuarioStorage)                     
             })
             .catch(async response=> {
-                console.log('ta vindo aq')
                 await ModalError('Logue novamenete')
-                localStorage.removeItem('userToken')
+                await localStorage.removeItem('userToken')
             })
         }else {
             return localStorage.removeItem('userToken')
@@ -133,7 +133,6 @@ export default function AuthProvider({ children }){
             rede: 'mundo-animal'
         }
         const resposta = await Api.post('/login', login).catch(async error=> {
-            console.log(error)
             if(!error.response.data){
                 return await ModalError('Error ao logar, tente mais tarde')
             }
@@ -142,14 +141,12 @@ export default function AuthProvider({ children }){
         if(resposta) {
             await localStorage.setItem('userToken',JSON.stringify(resposta.data.user))
             await ModalSucess('sendo redirecionado')
-            // return setTimeout(() => {
-            //    window.location.reload() 
-            // }, 2000);
+            return setTimeout(() => {
+            window.location.reload() 
+            }, 2000);
         }
     
     }   
-
-
 
     return(
         <AuthContext.Provider
