@@ -2,7 +2,7 @@ import {MuralComunidadeDiv} from './styled'
 
 import BtnVerMais from '../../BtnDefault/btnVermais'
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useReducer } from 'react'
 import { AuthContext } from '../../../contexts/auth'
 import { Api } from '../../../api'
 import ModalSucess from '../../modalSucess'
@@ -13,11 +13,48 @@ import { ToastContainer } from 'react-toastify'
 
 export default function MuralComunidade({className}) {
     
-    const {allPosts, reloadPosts, limit, setLimit, setLogar, usuario} = useContext(AuthContext)
+    const {setLogar, usuario} = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [link, setLink] = useState('')
+    const [ allPosts, setAllPosts ] = useState('')
+    const [ limit, setLimit] = useState(3)
     const navigate = useNavigate()
+
+    async function reloadPosts (limit) {
+      try {
+        if(limit) {
+            await Api.post('/allposts', {limit: limit}).then(response=>{
+              setAllPosts(false)
+            }).catch(e=>{
+                throw new Error(e.message)
+            })
+        }else {
+            await Api.post('/allposts', {limit: 3}).then(response=>{
+                setAllPosts(false)
+            }).catch(e=>{
+                throw new Error(e.message)
+            })
+        }
+          
+      } catch (error) {
+          console.log(error.message)
+      }
+    }
+
+    useEffect(()=> {
+      async function findAllPostMural(){
+          try {
+              await Api.post('/allposts', {limit: limit}).then(response=> {
+                  setAllPosts(response.data)
+              })
+          } catch (error) {
+              ModalError(error.message)
+          }
+      }
+      findAllPostMural() 
+    },[allPosts])
+
 
     async function SendPostMural(e) {
       e.preventDefault()

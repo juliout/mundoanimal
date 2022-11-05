@@ -5,7 +5,7 @@ import Email from '../../emailAutocompletee'
 
 
 export default function MLogin () {
-    const {login, setLogar, setCadastrar} = useContext(AuthContext)
+    const {Login, setLogar, setCadastrar} = useContext(AuthContext)
 
     async function Logar(e){
         e.preventDefault() 
@@ -16,7 +16,7 @@ export default function MLogin () {
             password : loginPass.value,
             rede: 'mundo-animal'
         }
-        return login(user)
+        return Login(user)
     }
 
     function abrirCadastro () {

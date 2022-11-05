@@ -10,11 +10,10 @@ export default function AuthProvider({ children }){
     const [ usuario, setUsuario ] = useState('');
     const [ typeG, setTypeG ] = useState('')
     const [ EntrarG, setEntrarG ] = useState(false)
-    const [ allPosts, setAllPosts ] = useState('')
-    const [ limit, setLimit] = useState(3)
     const [ postData, setPostData] = useState('')
     const [ cadastrar, setCadastrar] = useState(false)
     const [ logar, setLogar] = useState(false)
+
 
     const navigate = useNavigate()
     useEffect(()=>{
@@ -43,39 +42,7 @@ export default function AuthProvider({ children }){
     loadUsuario()
     },[])
 
-    useEffect(()=> {
-        async function findAllPostMural(){
-            try {
-                await Api.post('/allposts', {limit: limit}).then(response=> {
-                    setAllPosts(response.data)
-                })
-            } catch (error) {
-                ModalError(error.message)
-            }
-        }
-        findAllPostMural() 
-    },[])
 
-    async function reloadPosts (limit) {
-        try {
-            if(limit) {
-                await Api.post('/allposts', {limit: limit}).then(response=>{
-                    setAllPosts(response.data)
-                }).catch(e=>{
-                    throw new Error(e.message)
-                })
-            }else {
-                await Api.post('/allposts').then(response=>{
-                    setAllPosts(response.data)
-                }).catch(e=>{
-                    throw new Error(e.message)
-                })
-            }
-            
-        } catch (error) {
-            console.log(error.message)
-        }
-      }
     async function Login(login){
         const response = await Api.post('/login', login).catch(async response=> {
             if(!response.response.data){
@@ -87,7 +54,7 @@ export default function AuthProvider({ children }){
             localStorage.setItem('userToken',JSON.stringify(response.data.user))
             await ModalSucess(response.data.message)
             setUsuario(response.data.user)
-            return navigate('/')
+            return window.location.reload()
         }
     }
     function Sair(){
@@ -195,10 +162,6 @@ export default function AuthProvider({ children }){
                 typeClick,
                 EntrarG,
                 setEntrarG,
-                allPosts,
-                reloadPosts,
-                setLimit,
-                limit,
                 postData,
                 findAdmPost,
                 cadastrar,
