@@ -5,8 +5,8 @@ import { useEffect, useState, useContext } from 'react'
 import { Divisor } from '../../../functions/DivisorArray'
 import ContainerPosts from '../../ContainerPosts'
 import {AuthContext} from '../../../contexts/auth'
-import axios from 'axios'
 import ModalError from '../../modalError'
+import { ApiPrivate } from '../../../api'
 
 export default function Ultimas() {
 
@@ -29,7 +29,7 @@ export default function Ultimas() {
 
     const data = async () => {
       try {
-        axios.get('https://agregador.bigdates.com.br:3010/postsPagina/mundoanimal')
+        ApiPrivate.get('/postsPagina/mundoanimal')
         .then(response=> { 
           setarrays(response.data)
         })

@@ -3,7 +3,6 @@ import {PostDiv} from './styled'
 import {useState, useEffect, useContext} from 'react'
 import { ToastContainer } from 'react-toastify'
 import CommentsExample from '../../ComentFb'
-import { ApiPrivate } from '../../../api'
 
 export default function PostContainer({data}){
 
@@ -62,7 +61,7 @@ export default function PostContainer({data}){
                                 <p>
                                     {post_web_texto}
                                     {
-                                        post_imagem ? <img src={`https://agregador.bigdates.com.br:3010/imgpost/${post_imagem}`} alt="" /> : ''
+                                        post_imagem ? <img src={`${process.env.REACT_APP_BIGDATE_URL}/imgpost/${post_imagem}`} alt="" /> : ''
                                     }
                                 </p>
                             </div>
