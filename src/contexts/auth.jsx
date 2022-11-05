@@ -133,6 +133,7 @@ export default function AuthProvider({ children }){
             rede: 'mundo-animal'
         }
         const resposta = await Api.post('/login', login).catch(async error=> {
+            console.log(error)
             if(!error.response.data){
                 return await ModalError('Error ao logar, tente mais tarde')
             }
@@ -141,9 +142,9 @@ export default function AuthProvider({ children }){
         if(resposta) {
             await localStorage.setItem('userToken',JSON.stringify(resposta.data.user))
             await ModalSucess('sendo redirecionado')
-            return setTimeout(() => {
-               window.location.reload() 
-            }, 2000);
+            // return setTimeout(() => {
+            //    window.location.reload() 
+            // }, 2000);
         }
     
     }   
