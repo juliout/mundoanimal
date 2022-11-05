@@ -31,6 +31,7 @@ export default function AuthProvider({ children }){
                 setUsuario(usuarioStorage)                     
             })
             .catch(async response=> {
+                console.log('ta vindo aq')
                 await ModalError('Logue novamenete')
                 localStorage.removeItem('userToken')
             })
